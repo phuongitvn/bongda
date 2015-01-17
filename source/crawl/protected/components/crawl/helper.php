@@ -3,7 +3,7 @@ class helper{
 	public static function downloadAvatar($fileSource, $fileName='')
 	{
 		$fileSystem = new Filesystem();
-		$storagePath = 'E:\phuongnv\Vega\yiilab\storage';
+		$storagePath = SITE_PATH.DS.'storage';
 		$year = date('Y');
 		$month = date('m');
 		$day = date('d');
@@ -14,7 +14,7 @@ class helper{
 		$download = FileHelper::_downloadFileCurl($fileSource, $fileDest);
 		return $year.'_'.$month.'/'.$day.'/'.$fileName.'.'.$ext[count($ext)-1];
 	}
-	public static function makeFriendlyUrl($string, $allowUnder = false, $sep)
+	public static function makeFriendlyUrl($string, $allowUnder = false, $sep='-')
 	{
 		static $charMap = array(
 				"à"=>"a","ả"=>"a","ã"=>"a","á"=>"a","ạ"=>"a","ă"=>"a","ằ"=>"a","ẳ"=>"a","ẵ"=>"a","ắ"=>"a","ặ"=>"a","â"=>"a","ầ"=>"a","ẩ"=>"a","ẫ"=>"a","ấ"=>"a","ậ"=>"a",

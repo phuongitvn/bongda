@@ -1,4 +1,5 @@
 <?php
+Yii::import('application.components.crawl.AbstractDataCrawl');
 class DataCrawl extends AbstractDataCrawl
 {
 	protected $url = '';
@@ -29,7 +30,7 @@ class DataCrawl extends AbstractDataCrawl
 			throw new Exception('Content pattern is empty', 606);
 		}
 		$contentParttern = $this->config['content_pattern'];
-		$this->beforeGetContent();
+		//$this->beforeGetContent();
 		$contentBody = $this->html->find("$contentParttern",0)->outertext;
 		$this->afterGetContent();
 		return $contentBody;

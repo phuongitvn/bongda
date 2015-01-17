@@ -1,4 +1,5 @@
 <?php
+Yii::import('application.components.crawl.DataCrawl');
 class BongdasoData extends DataCrawl
 {
 	public function __construct($config)

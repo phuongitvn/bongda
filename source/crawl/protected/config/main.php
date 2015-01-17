@@ -4,7 +4,8 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-return array(
+return CMap::mergeArray(
+		require_once dirname(__FILE__).'../../../../common/config/local.php',array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
 
@@ -36,12 +37,6 @@ return array(
 	
 	// application components
 	'components'=>array(
-		'messages' => array(
-		'class' => 'CDbMessageSource',
-		'sourceMessageTable' => 'tbl_msgOriginal',
-		'translatedMessageTable' => 'tbl_msgTraducido',
-		'onMissingTranslation' => array('MensajeATraducir', 'load'),
-		),
 		/* 'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -51,13 +46,14 @@ return array(
 		//Forces source language never exists
 		
 		// uncomment the following to use a MySQL database
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=yiilab',
+		/* 'db'=>array(
+			'connectionString' => 'mysql:host=localhost;dbname=ahpproject',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => '123456',
 			'charset' => 'utf8',
-		),
+			'tablePrefix' => 'tbl_',
+		), */
 		/*'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
@@ -79,4 +75,4 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
 	),
-);
+));

@@ -1,4 +1,5 @@
 <?php
+Yii::import('application.components.crawl.BongdasoData');
 class CrawlDataFactory
 {
 	//
