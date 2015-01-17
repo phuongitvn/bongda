@@ -1,28 +1,57 @@
-<?php
-$themeUrl = Yii::app()->theme->baseUrl;
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
-	<link type="image/x-icon" rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico" >
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo $themeUrl; ?>/fonts/font.css" />
-	
-	<link rel="stylesheet" type="text/css" href="/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $themeUrl; ?>/css/all.css" />
-<!-- get jQuery from the google apis -->
-	<?php Yii::app()->clientScript->scriptMap=array('jquery.min.js'=>false);?>
-	<script type="text/javascript" src="<?php echo $themeUrl; ?>/js/jquery171.min.js"></script>
-	<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="./js/jquery-1.7.1.min.js"><\/script>');</script>
-	<script type="text/javascript" src="<?php echo $themeUrl; ?>/js/jquery.main.js"></script>
-
-	<!-- REVOLUTION BANNER CSS SETTINGS -->
-	
-	<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="./css/ie.css" /><![endif]-->	
-	<link rel="stylesheet" href="<?php echo $themeUrl; ?>/demo/theme_style.css" type="text/css" />
-	<script type="text/javascript" src="<?php echo $themeUrl; ?>/demo/theme_settings.js"></script>
-	<link rel="stylesheet" class="styleswitcher" href="#" media="screen" />
-	<title><?php echo CHtml::encode($this->pageTitle)." | ".Yii::app()->name; ?></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Template Jquery Mobile</title>
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/style.css">
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/jquery.mobile.iscrollview-pull.css">
+	<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.min.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/iscroll.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/jquery.mobile.iscrollview.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/pull-example.js"></script>
+    <style>
+    .ui-listview>li.ui-li-has-thumb>a.ui-btn>img:first-child{
+    	#position: absolute;
+		#left: 5px;
+		#top: 5px;
+		#bottom: 5px;
+    }
+    .ui-listview>li.ui-li-has-thumb>a.ui-btn{
+    	#min-height: 68px!important;
+    	#max-height: 68px!important;
+    	padding-left: 92px!important;
+    	padding-right: 0!important
+    }
+    .iscroll-content{
+    	padding: 0 16px!important;
+    }
+    .ui-content .ui-listview{
+    	border-radius: 0!important;
+    }
+    .ui-listview>li h3{
+    font-size: 0.9em!important;
+    	margin: 2px 0;
+    	white-space: normal!important;
+    	font-weight: normal!important;
+    	color: #116AB5;
+    }
+    .ui-listview>li p{
+    	white-space: normal!important;
+    	margin: 0!important;
+    }
+    .ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after{
+    	background-color: #108040;
+    }
+    .ui-listview>li.ui-li-has-thumb>a.ui-btn:after{
+    	content:none!important;
+    }
+    .smenu li a.ui-btn-active{
+    	background-color: #B2412D!important;
+    	border-color: #B2412D!important;
+    }
+    </style>
 </head>
+<body>

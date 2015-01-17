@@ -1,80 +1,81 @@
 <?php require_once '_header.php';?>
-<body class="inner">
-	<!-- wrapper -->
-	<div id="wrapper">
-		<div class="w1">
-			<div class="w2">
-				<!-- header -->
-				<header id="header">
-					<!-- section -->
-					<div class="section">
-						<h1 class="logo"><a href="<?php echo Yii::app()->createUrl('/site/index');?>"><img width="250" src="<?php echo Yii::app()->theme->baseUrl?>/images/logo.png" /></a></h1>
-						<div class="contact-box">
-							<strong class="phone">HOTLINE: <span>0902 807 007</span></strong>
-							<!-- social -->
-							<ul class="social">
-								<li><a href="http://facebook.com/thongtinquanly" target="_blank" class="facebook">facebook</a></li>
-								<li><a href="https://plus.google.com/112674651249945423358/posts" target="_blank" class="google">google</a></li>
-								<li><a href="#" class="twitter">twitter</a></li>
-								<li><a href="#" class="pinterest">pinterest</a></li>
-								<li><a href="#" class="rss">rss</a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- nav-box -->
-				<!--
-				<nav class="nav-box">
-					<ul id="nav">
-						<li class="active"><a href="./index.html">Home</a>
-							<ul>
-								<li><a>1</a></li>
-								<li><a>1</a><ul>
-								<li><a>1</a></li>
-								<li><a>1</a></li>
-							</ul></li>
-							</ul>
-						</li>
-						<li><a href="software.html">Software</a></li>								
-						<li><a href="pricing.html">Pricing</a></li>								
-						<li><a href="casestudies.html">Case Studies</a></li>							
-						<li><a href="testimonials.html">Testimonials</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="blog.html">Blog</a></li>
-					</ul>
-				</nav>
-				-->
-				<?php $this->widget('application.widgets.Menu.Menu', array('_item_active'=>$this->activemenu,'_gmid'=>1,'_style'=>'style2'));?>
-				</header>
-				<!-- main -->
-				<div id="main"><?php echo $content;?></div>
-			</div>
-		</div>
-		<!-- footer -->
-		<?php require_once '_footer.php';?>
-	</div>
-	<script type="text/javascript">
-	$('a[data-rel]').each(function() {
-	$(this).attr('rel', $(this).attr('data-rel')).removeAttr('data-rel');
-	});
-	</script>	
-	<!--<div class="theme_settings_wrapper">
-		<a href="javascript:void(0)" id="show_settings_button"></a>
-		<div class="theme_settings_container">
-			<div class="theme_settings_container_top"></div>
-			<div class="theme_settings_container_bott"></div>
-			<a href="javascript:void(0)" id="hide_settings_button"></a>
-			<h3>Support</h3>
-			<a href="../../wide/light-red/"><img src="<?php echo $themeUrl; ?>/demo/images/settings/circle.png" alt="image description" /> Sale</a><br />
-			<a href="./index.html"><img src="<?php echo $themeUrl; ?>/demo/images/settings/circle.png" alt="image description" /> Technical</a><br /><br /><h4>&nbsp;</h4>
-			<h3>Social Page</h3>
-			<ul id="color_scheme" class="styleswitcher">
-				<li><a href="../light-blue/index.html" id="blue" title="Blue">Blue</a></li>
-				<li><a href="../light-orange/index.html" id="orange" title="Orange">Orange</a></li>
-				<li><a href="./index.html" id="red" title="Red">Red</a></li>
-				<li><a href="../light-green/index.html" id="green" title="Green">Green</a></li>
+<div class="pull-demo-page" data-role="page" id="panel-fixed-page1" data-title="Panel fixed positioning">
+
+    <div data-role="header" data-position="fixed" style="border-bottom: 0;background: #108040;text-shadow: none;color: #fff;">
+        <h1 style="background: #108040">BÓNG ĐÁ</h1>
+        <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+        <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
+        <div data-role="navbar">
+			<ul data-ajax="false" class="smenu">
+				<li><a href="<?php echo SITE_URL;?>" class="ui-btn-active ui-state-persist">Tin Tức</a></li>
+				<li><a href="#panel-fixed-page2">Lịch Thi Đấu</a></li>
+				<li><a href="index.html" class="ui-link">Bảng Xếp Hạng</a></li>
 			</ul>
-		</div>	
-	</div>
-	-->
+		</div>
+    </div><!-- /header -->
+    <?php echo $content;?>
+    <div data-role="footer" data-position="fixed">
+    	<!-- <div data-role="navbar">
+			<ul data-ajax="false">
+				<li><a href="/" class="ui-btn-active ui-state-persist">Trang chủ</a></li>
+				<li><a href="#panel-fixed-page2">Giới thiệu</a></li>
+				<li><a href="/" class="ui-link">Liên hệ</a></li>
+			</ul>
+		</div> -->
+    </div><!-- /footer -->
+
+	<div data-role="panel" data-position-fixed="true" data-display="push" data-theme="g" id="nav-panel">
+
+		<ul data-role="listview">
+            <li data-icon="delete"><a href="#" data-rel="close">Tin tức bóng đá</a></li>
+                <li><a href="#panel-fixed-page2">Bóng đá Anh</a></li>
+                <li><a href="#panel-fixed-page2">Bóng đá Tây Ban Nha</a></li>
+                <li><a href="#panel-fixed-page2">Bóng đá Đức</a></li>
+                <li><a href="#panel-fixed-page2">Europa Leage</a></li>
+                <li><a href="#panel-fixed-page2">Bóng đá Việt Nam</a></li>
+                <li><a href="#panel-fixed-page2">Lịch thi đấu</a></li>
+                <li><a href="#panel-fixed-page2">Bảng xếp hạng</a></li>
+                <li><a href="#panel-fixed-page2">Chuyển nhượng</a></li>
+		</ul>
+
+	</div><!-- /panel -->
+
+	<div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="a" id="add-form">
+
+        <form class="userform">
+
+        	<h2>Login</h2>
+
+            <label for="name">Username:</label>
+            <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini">Cancel</a></div>
+                <div class="ui-block-b"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Save</a></div>
+			</div>
+        </form>
+
+	</div><!-- /panel -->
+
+</div><!-- /page -->
+
+<div data-role="page" id="panel-fixed-page2">
+
+    <div data-role="header">
+        <h1>Landing page</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content jqm-content">
+
+        <p>This is just a landing page.</p>
+
+        <a href="#panel-fixed-page1" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini ui-icon-back ui-btn-icon-left">Back</a>
+
+    </div><!-- /content -->
+
+</div><!-- /page -->
 </body>
 </html>
