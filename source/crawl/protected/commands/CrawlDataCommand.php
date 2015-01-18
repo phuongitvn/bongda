@@ -22,14 +22,17 @@ class CrawlDataCommand extends CConsoleCommand
 					$imgAvatar = $html->find("#thirdbox_double .foto_news_foto img", $i)->src;
 					$key = time().'_'.$i;
 					$filePath = helper::downloadAvatar($imgAvatar, $key);
-					$sqlItems[$key] = "('".$url."','".$title."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
+					$sqlItems[] = "('".$url."','".$title."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
 				}
 				$i++;
 				echo 'Crawl success |'.$url."\n";
 			}
 			if(count($sqlItems)){
+				for ($i=count($sqlItems)-1;$i>=0;$i--){
+					$sqlItemsSort[] = $sqlItems[$i];
+				}
 				$sql = "INSERT INTO tbl_crawl_url(url, name, category_id, site, created_datetime, updated_datetime, avatar_path, status) VALUES";
-				$sql .=implode(',', $sqlItems);
+				$sql .=implode(',', $sqlItemsSort);
 				$res = Yii::app()->db->createCommand($sql)->execute();
 			}
 			//xu ly lai anh thumb
@@ -53,7 +56,7 @@ class CrawlDataCommand extends CConsoleCommand
 						$desWidth = $desHeight = 80;
 						//$imgCrop->resizeRatio($fileDest, $desWidth, $desHeight, 100);
 						$imgCrop->resizeCrop($fileDest, $desWidth, $desHeight, 100);
-						//$fileSystem->remove($fileSource);
+						$fileSystem->remove($fileSource);
 						if(file_exists($fileDest)){
 							$fileUpdate[$item['id']] = $parseFilePath[0].'/'.$parseFilePath[1].'/'.$item['id'].'.'.$fileExt;
 						}
