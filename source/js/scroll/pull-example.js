@@ -25,9 +25,9 @@
   function gotPullDownData(event, data) {
     var i,
         newContent = "";        
-    for (i=0; i<3; i+=1) {  // Generate some fake new content
+    /*for (i=0; i<3; i+=1) {  // Generate some fake new content
       newContent = "<li>Pulldown-generated row " + (++pullDownGeneratedCount) + "</li>" + newContent;
-      }
+      }*/
     $(listSelector).prepend(newContent).listview("refresh");  // Prepend new content and refresh listview
     data.iscrollview.refresh();    // Refresh the iscrollview
     }
