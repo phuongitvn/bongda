@@ -33,6 +33,7 @@ class CrawlDataCommand extends CConsoleCommand
 				}
 				$sql = "INSERT INTO tbl_crawl_url(url, name, category_id, site, created_datetime, updated_datetime, avatar_path, status) VALUES";
 				$sql .=implode(',', $sqlItemsSort);
+				$sql .=" ON DUPLICATE KEY UPDATE updated_datetime = NOW() ";
 				$res = Yii::app()->db->createCommand($sql)->execute();
 			}
 			//xu ly lai anh thumb
