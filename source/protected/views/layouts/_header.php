@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Template Jquery Mobile</title>
+	<title>.::Tin Bóng Đá::.</title>
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/style.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/jquery.mobile.iscrollview-pull.css">
