@@ -55,6 +55,11 @@
     	border-color: #ededed!important;
     	color: #333!important;
     }
+    @media (max-width: 500px){
+	    #postview img{
+	    	width: 100%!important;
+	    }
+    }
     </style>
 </head>
 <body>
