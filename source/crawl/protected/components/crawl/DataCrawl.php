@@ -30,12 +30,12 @@ class DataCrawl extends AbstractDataCrawl
 			throw new Exception('Content pattern is empty', 606);
 		}
 		$contentParttern = $this->config['content_pattern'];
-		//$this->beforeGetContent();
+		$this->beforeGetContent();
 		$contentBody = $this->html->find("$contentParttern",0)->outertext;
 		$this->afterGetContent();
 		return $contentBody;
 	}
-	public function getImageThumb()
+	public function getFirstImage()
 	{
 		$imageUrl = '';
 		if(isset($this->config['imgavatar_pattern']) || !empty($this->config['imgavatar_pattern'])){

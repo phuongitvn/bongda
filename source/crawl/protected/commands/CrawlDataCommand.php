@@ -1,4 +1,5 @@
 <?php
+ini_set('max_execution_time', 300);
 //include 'E:\source\gcms\bongda\trunk\source\crawl\protected\components\crawl\simple_html_dom.php';
 //E:\xampp\php\php E:\source\gcms\bongda\trunk\source\crawl\index.php CrawlData view
 class CrawlDataCommand extends CConsoleCommand
@@ -15,63 +16,114 @@ class CrawlDataCommand extends CConsoleCommand
 			$sqlItems = array();
 			foreach ($html->find("#thirdbox_double ._title_ h1 a") as $e){
 				$url = $e->href;
-				$title = $e->plaintext;
-				if($urlCat['site']='http://bongdaso.com'){
-					$url = $urlCat['site'].'/'.$url;
+				$checkIsset = $this->issetUrl($url);
+				if(!$checkIsset){
+					$title = $e->plaintext;
+					$imgAvatar = $html->find("#thirdbox_double .foto_news_foto img", $i)->src;
+					$key = time().'_'.$i;
+					$filePath = helper::downloadAvatar($imgAvatar, $key);
+					$sqlItems[$key] = "('".$url."','".$title."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
 				}
-				$imgAvatar = $html->find("#thirdbox_double .foto_news_foto img", $i)->src;
-				$filePath = helper::downloadAvatar($imgAvatar, time().'_'.$i);
-				$sqlItems[] = "('".$url."','".$title."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."')";
 				$i++;
 				echo 'Crawl success |'.$url."\n";
 			}
-			//echo '<pre>';print_r($article);exit;
-			$sql = "INSERT INTO tbl_crawl_url(url, name, category_id, site, created_datetime, updated_datetime, avatar_path) VALUES";
-			$sql .=implode(',', $sqlItems);
-			$sql .=" ON DUPLICATE KEY UPDATE name = VALUES(name),
+			if(count($sqlItems)){
+				$sql = "INSERT INTO tbl_crawl_url(url, name, category_id, site, created_datetime, updated_datetime, avatar_path, status) VALUES";
+				$sql .=implode(',', $sqlItems);
+				$res = Yii::app()->db->createCommand($sql)->execute();
+			}
+			//xu ly lai anh thumb
+			$list = $this->getUrlCrawlDetail(3);
+			if($list){
+				$fileSystem = new Filesystem();
+				$fileUpdate = array();
+				$fileUpdateError = array();
+				foreach ($list as $item){
+					$fileSource = SITE_PATH.DS.'storage'.DS.str_replace('/', DS, $item['avatar_path']);
+						
+					if (file_exists($fileSource)) {
+						echo 'exists '.$fileSource."\n";
+						$parseFilePath = explode('/', $item['avatar_path']);
+						$parseFileName = explode('.', $parseFilePath[count($parseFilePath)-1]);
+						$fileExt = $parseFileName[count($parseFileName)-1];
+						$fileDest = SITE_PATH.DS.'storage'.DS.$parseFilePath[0].DS.$parseFilePath[1].DS.$item['id'].'.'.$fileExt;
+						echo "\n";
+						list($width, $height) = getimagesize($fileSource);
+						$imgCrop = new ImageCrop($fileSource, 0, 0, $width, $height);
+						$desWidth = $desHeight = 80;
+						//$imgCrop->resizeRatio($fileDest, $desWidth, $desHeight, 100);
+						$imgCrop->resizeCrop($fileDest, $desWidth, $desHeight, 100);
+						//$fileSystem->remove($fileSource);
+						if(file_exists($fileDest)){
+							$fileUpdate[$item['id']] = $parseFilePath[0].'/'.$parseFilePath[1].'/'.$item['id'].'.'.$fileExt;
+						}
+					}else{
+						echo 'not exists '.$fileSource."\n";
+						$fileUpdateError[] = $item['id'];
+					}
+				}
+				if(count($fileUpdate)>0){
+					//echo '<pre>';print_r($fileUpdate);
+					foreach ($fileUpdate as $key => $value){
+						$sql = "UPDATE tbl_crawl_url SET avatar_path='$value',status=0 WHERE id=$key";
+						Yii::app()->db->createCommand($sql)->execute();
+					}
+				}
+				if(count($fileUpdateError)>0){
+					foreach ($fileUpdateError as $key => $value){
+						$sql = "UPDATE tbl_crawl_url SET status=2 WHERE id=$value";
+						Yii::app()->db->createCommand($sql)->execute();
+					}
+				}
+			}
+			//end xu ly lai anh thumb
+			
+			/* $sql .=" ON DUPLICATE KEY UPDATE name = VALUES(name),
 										 url = VALUES(url),
 										category_id = VALUES(category_id),
 										site = VALUES(site),
 										avatar_path = VALUES(avatar_path),
-										updated_datetime = NOW() ";
-			$res = Yii::app()->db->createCommand($sql)->execute();
-			if($res){
-				echo 'insert data success!';
-			}else{
-				echo 'fail';
-			}
-			
+										updated_datetime = NOW() "; */
 		}
 		
 	}
 	public function actionView()
 	{
+		$connection=Yii::app()->db;
+		$transaction=$connection->beginTransaction();
 		try{
-			$viewUrlList = $this->getUrlCrawlDetail();
+			$viewUrlList = $this->getUrlCrawlDetail(0);
 			if($viewUrlList){
 				$data = CrawlDataFactory::makeDataCrawl('bds');
+				$listUrl = array();
 				foreach ($viewUrlList as $item){
-					echo '---Start crawl detail from: '.$item['url'].'---'."\n";
-					$data->setUrl($item['url']);
-					$title = $data->getTitle();
+					$url = $item['site'].'/'.$item['url'];
+					echo '---Start crawl detail from: '.$url.'---'."\n";
+					$data->setUrl($url);
+					$title = addslashes($data->getTitle());
+					
 					$urlKey = helper::makeFriendlyUrl($title);
 					$content = addslashes($data->getContentBody());
 					//$urlImage = $data->getImageThumb();
 					$sqlItems[] = "('{$item['id']}','$title','$urlKey','$content','{$item['avatar_path']}',NOW(),NOW())";
+					$listUrl[]=$item['id'];
 				}
-				$sql = "INSERT INTO tbl_crawl_content(url_id,title,url_key,content,avatar_url,created_datetime,updated_datetime) VALUES ";
-				$sql .=implode(',', $sqlItems);
-				$sql .=" ON DUPLICATE KEY UPDATE title = VALUES(title),
-										url_key = VALUES(url_key),
-										content = VALUES(content),
-										avatar_url = VALUES(avatar_url),
-										updated_datetime = NOW() ";
-				$res = Yii::app()->db->createCommand($sql)->execute();
-				echo $res?'success':'fail';
+				$sql1 = "INSERT INTO tbl_crawl_content(url_id,title,url_key,content,avatar_url,created_datetime,updated_datetime) VALUES ";
+				$sql1 .=implode(',', $sqlItems);
+				$sql1 .=" ON DUPLICATE KEY UPDATE updated_datetime = NOW() ";
+				$res = $connection->createCommand($sql1)->execute();
+				$sql2 = "UPDATE tbl_crawl_url SET status=1 WHERE id IN(".implode(',', $listUrl).")";
+				$res = $connection->createCommand($sql2)->execute();
+				$transaction->commit();
+			}else{
+				echo 'have not any url to crawl';
 			}
+			
+			echo 'success';
 		}catch (Exception $e)
 		{
 			echo $e->getMessage();
+			$transaction->rollback();
 		}
 	}
 	private function getUrlCrawlCategory()
@@ -79,9 +131,18 @@ class CrawlDataCommand extends CConsoleCommand
 		$sql = "select * from tbl_crawl_category_url";
 		return Yii::app()->db->createCommand($sql)->queryAll();
 	}
-	private function getUrlCrawlDetail()
+	private function getUrlCrawlDetail($status=0)
 	{
-		$sql = "select * from tbl_crawl_url";
-		return Yii::app()->db->createCommand($sql)->queryAll();
+		$sql = "select * from tbl_crawl_url where status=:status limit 100";
+		$command = Yii::app()->db->createCommand($sql);
+		$command->bindParam(':status', $status, PDO::PARAM_STR);
+		return $command->queryAll();
+	}
+	private function issetUrl($url){
+		$sql = "SELECT count(id) as total FROM tbl_crawl_url WHERE url=:url";
+		$command = Yii::app()->db->createCommand($sql);
+		$command->bindParam(':url', $url, PDO::PARAM_STR);
+		$result = $command->queryScalar();
+		return $result>0?true:false;
 	}
 }

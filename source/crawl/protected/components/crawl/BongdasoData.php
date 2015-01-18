@@ -20,7 +20,13 @@ class BongdasoData extends DataCrawl
 	protected function beforeGetContent()
 	{
 		parent::beforeGetContent();
-		$this->html->find(".art_content img",0)->src = 'http://bongdaso.com'.$this->getImageThumb();
+		$modify = $this->html->find(".art_content img",0);
+		if($modify){
+			$src = $this->getFirstImage();
+			if(strpos($src, 'http')===false){
+				$modify->src = 'http://bongdaso.com'.$src;
+			}
+		}
 	}
 	/* public function setUrl($url)
 	{

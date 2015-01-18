@@ -67,6 +67,7 @@ class ImageCrop
         $tmp = imagecreatetruecolor($image_size[0],$image_size[1]);
         $image = @$func($this->_fileName);
         $newFileJpg = "/tmp/".time().".jpg";
+        //$newFileJpg = "E:/tmp/".time().".jpg";
 
         @imagecopyresampled($tmp,$image,0,0,0,0,$new_width,$new_height,$image_size[0],$image_size[1]);
         //imagejpeg($tmp,$this->_fileName.".jpg",100);

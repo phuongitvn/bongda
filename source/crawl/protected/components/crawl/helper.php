@@ -7,12 +7,12 @@ class helper{
 		$year = date('Y');
 		$month = date('m');
 		$day = date('d');
-		$folderPathDest = $storagePath.DS.$year.'_'.$month.DS.$day;
+		$folderPathDest = $storagePath.DS.$year.'_'.$month.DS.$day.DS.'source';
 		FileHelper::_makeFolder($folderPathDest);
 		$ext = explode('.', $fileSource);
 		$fileDest = $folderPathDest.DS.$fileName.'.'.$ext[count($ext)-1];
 		$download = FileHelper::_downloadFileCurl($fileSource, $fileDest);
-		return $year.'_'.$month.'/'.$day.'/'.$fileName.'.'.$ext[count($ext)-1];
+		return $year.'_'.$month.'/'.$day.'/source/'.$fileName.'.'.$ext[count($ext)-1];
 	}
 	public static function makeFriendlyUrl($string, $allowUnder = false, $sep='-')
 	{
