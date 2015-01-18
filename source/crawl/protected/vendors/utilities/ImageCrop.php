@@ -112,7 +112,7 @@ class ImageCrop
 		}
 		
 		$saved = false;
-		if($func=='imagepng') $quality = $quality/10;
+		if($func=='imagepng') $quality = 9;
 		$saved = $func($this->_imgFinal, $filename, $quality);
 		
 		if ($saved == false)
