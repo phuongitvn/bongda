@@ -49,8 +49,11 @@
     	content:none!important;
     }
     .smenu li a.ui-btn-active{
-    	background-color: #B2412D!important;
-    	border-color: #B2412D!important;
+    	#background-color: #B2412D!important;
+    	#border-color: #B2412D!important;
+    	background-color: #ededed!important;
+    	border-color: #ededed!important;
+    	color: #333!important;
     }
     </style>
 </head>
