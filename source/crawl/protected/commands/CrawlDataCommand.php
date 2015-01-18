@@ -30,14 +30,14 @@ class CrawlDataCommand extends CConsoleCommand
 			} */
 			//bongda.com.vn
 			if($urlCat['site']=='http://www.bongda.com.vn'){
-			foreach ($html->find(".post-listing article h2 a") as $e){
+			foreach ($html->find(".post-listing article.item-list h2 a") as $e){
 				echo $i;
 				$url = $e->href;
 				$checkIsset = $this->issetUrl($url);
 				if(!$checkIsset){
 					$title = $e->plaintext;
 					$src = 'data-src';
-					$imgAvatar = $html->find(".post-listing article .post-thumbnail a noscript img", $i);
+					$imgAvatar = $html->find(".post-listing article.item-list .post-thumbnail a noscript img", $i);
 					if(is_object($imgAvatar)){
 						$imgAvatar = $imgAvatar->src;
 					}else{
