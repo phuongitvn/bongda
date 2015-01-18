@@ -3,7 +3,7 @@
 $controller = Yii::app()->controller->id;
 $action = Yii::app()->controller->action->id;
 ?>
-<div class="pull-demo-page" data-role="page" id="panel-fixed-page1" data-title="Panel fixed positioning">
+<div class="pull-demo-page" data-role="page" id="panel-fixed-page1" data-title=".::Tin Bóng Đá::.">
 
     <div data-role="header" data-position="fixed" style="border-bottom: 0;background: #108040;text-shadow: none;color: #fff;">
         <h1 style="background: #108040">BÓNG ĐÁ</h1>
