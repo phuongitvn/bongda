@@ -32,6 +32,10 @@ class SiteController extends FrontendController
 		$data = Yii::app()->db->createCommand($sql)->queryAll();
 		$this->render('index', compact('data'));
 	}
+	public function actionRank()
+	{
+		$this->render('rank');
+	}
 	/**
 	 * page html dynamic
 	 */
