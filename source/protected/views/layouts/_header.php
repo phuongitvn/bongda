@@ -35,7 +35,7 @@
     font-size: 0.9em!important;
     	margin: 2px 0;
     	white-space: normal!important;
-    	font-weight: normal!important;
+    	font-weight: bold!important;
     	color: #116AB5;
     }
     .ui-listview>li p{
