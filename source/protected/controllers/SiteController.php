@@ -28,7 +28,7 @@ class SiteController extends FrontendController
 	public function actionIndex()
 	{
 		$this->layout='scroll';
-		$sql = "SELECT * FROM `tbl_crawl_url` order by id desc limit 100";
+		$sql = "SELECT * FROM `tbl_crawl_url` where status=1 order by id desc limit 100";
 		$data = Yii::app()->db->createCommand($sql)->queryAll();
 		$this->render('index', compact('data'));
 	}
