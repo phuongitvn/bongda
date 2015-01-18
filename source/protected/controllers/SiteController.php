@@ -34,6 +34,12 @@ class SiteController extends FrontendController
 	}
 	public function actionRank()
 	{
+		$this->layout='body';
+		$this->render('rank');
+	}
+	public function actionSchedule()
+	{
+		$this->layout='body';
 		$this->render('rank');
 	}
 	/**
