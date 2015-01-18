@@ -14,7 +14,8 @@ class CrawlDataCommand extends CConsoleCommand
 			$i=0;
 			$article = array();
 			$sqlItems = array();
-			foreach ($html->find("#thirdbox_double ._title_ h1 a") as $e){
+			//bongdaso.com
+			/* foreach ($html->find("#thirdbox_double ._title_ h1 a") as $e){
 				$url = $e->href;
 				$checkIsset = $this->issetUrl($url);
 				if(!$checkIsset){
@@ -26,7 +27,35 @@ class CrawlDataCommand extends CConsoleCommand
 				}
 				$i++;
 				echo 'Crawl success |'.$url."\n";
+			} */
+			//bongda.com.vn
+			if($urlCat['site']=='http://www.bongda.com.vn'){
+			foreach ($html->find(".post-listing article h2 a") as $e){
+				echo $i;
+				$url = $e->href;
+				$checkIsset = $this->issetUrl($url);
+				if(!$checkIsset){
+					$title = $e->plaintext;
+					$src = 'data-src';
+					$imgAvatar = $html->find(".post-listing article .post-thumbnail a noscript img", $i);
+					if(is_object($imgAvatar)){
+						$imgAvatar = $imgAvatar->src;
+					}else{
+						$imgAvatar = '';
+					}
+					echo $imgAvatar;
+					echo "\n";
+					$key = time().'_'.$i;
+					$filePath = helper::downloadAvatar($imgAvatar, $key);
+					$sqlItems[] = "('".$url."','".$title."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
+				}else{
+					echo 'isset';
+				}
+				$i++;
+				echo 'Crawl success |'.$url."\n";
 			}
+			}
+			
 			if(count($sqlItems)){
 				for ($i=count($sqlItems)-1;$i>=0;$i--){
 					$sqlItemsSort[] = $sqlItems[$i];
@@ -98,10 +127,11 @@ class CrawlDataCommand extends CConsoleCommand
 		try{
 			$viewUrlList = $this->getUrlCrawlDetail(0);
 			if($viewUrlList){
-				$data = CrawlDataFactory::makeDataCrawl('bds');
+				$data = CrawlDataFactory::makeDataCrawl('bdcv');
 				$listUrl = array();
 				foreach ($viewUrlList as $item){
-					$url = $item['site'].'/'.$item['url'];
+					//$url = $item['site'].'/'.$item['url'];
+					$url = $item['url'];
 					echo '---Start crawl detail from: '.$url.'---'."\n";
 					$data->setUrl($url);
 					$title = addslashes($data->getTitle());

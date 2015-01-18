@@ -13,6 +13,9 @@ class CrawlDataFactory
 			case 'bd24h':
 				$data = new Bongda24h($config);
 				break;
+			case 'bdcv'://bongda.com.vn
+				$data = new Bongdacomvn($config);
+				break;
 			default:
 				$data = NULL;
 				break;
