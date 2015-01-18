@@ -53,9 +53,9 @@ class CrawlDataCommand extends CConsoleCommand
 				foreach ($viewUrlList as $item){
 					echo '---Start crawl detail from: '.$item['url'].'---'."\n";
 					$data->setUrl($item['url']);
-					echo $title = $data->getTitle();
-					echo $urlKey = helper::makeFriendlyUrl($title);
-					echo $content = addslashes($data->getContentBody());
+					$title = $data->getTitle();
+					$urlKey = helper::makeFriendlyUrl($title);
+					$content = addslashes($data->getContentBody());
 					//$urlImage = $data->getImageThumb();
 					$sqlItems[] = "('{$item['id']}','$title','$urlKey','$content','{$item['avatar_path']}',NOW(),NOW())";
 				}
