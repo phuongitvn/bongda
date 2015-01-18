@@ -7,7 +7,12 @@ $action = Yii::app()->controller->action->id;
 
     <div data-role="header" data-position="fixed" style="border-bottom: 0;background: #108040;text-shadow: none;color: #fff;">
         <h1 style="background: #108040">BÓNG ĐÁ</h1>
+        
+        <?php if($controller=='post' && $action=='view'){?>
+        <a href="<?php echo SITE_URL;?>" data-icon="back" data-iconpos="notext" >Quay lại</a>
+        <?php }else{?>
         <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+        <?php }?>
         <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
         <div data-role="navbar">
 			<ul data-ajax="false" class="smenu">
