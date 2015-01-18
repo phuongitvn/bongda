@@ -11,7 +11,7 @@ $action = Yii::app()->controller->action->id;
         <a href="#add-form" data-icon="gear" data-iconpos="notext">Add</a>
         <div data-role="navbar">
 			<ul data-ajax="false" class="smenu">
-				<li><a href="<?php echo SITE_URL;?>" class="<?php if($controller=='site' && $action=='index') echo 'ui-btn-active ui-state-persist';?>">Tin Tức</a></li>
+				<li><a href="<?php echo SITE_URL;?>" class="<?php if(($controller=='site' && $action=='index') || ($controller=='post' && $action=='view')) echo 'ui-btn-active ui-state-persist';?>">Tin Tức</a></li>
 				<li><a class="<?php if($controller=='page' && $action=='view') echo 'ui-btn-active ui-state-persist';?>" href="<?php echo Yii::app()->createUrl('/page/view', array('url_key_page'=>'lich-thi-dau'))?>">Lịch Thi Đấu</a></li>
 				<li><a href="<?php echo Yii::app()->createUrl('/site/rank');?>" class="<?php if($controller=='site' && $action=='rank') echo 'ui-btn-active ui-state-persist';?> ui-link">Bảng Xếp Hạng</a></li>
 			</ul>

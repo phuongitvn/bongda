@@ -1,6 +1,6 @@
 <?php
 //include 'E:\source\gcms\bongda\trunk\source\crawl\protected\components\crawl\simple_html_dom.php';
-//C:\xampp\php\php E:\phuongnv\Vega\yiilab\console.php CrawlData index
+//E:\xampp\php\php E:\source\gcms\bongda\trunk\source\crawl\index.php CrawlData view
 class CrawlDataCommand extends CConsoleCommand
 {
 	public function actionIndex(){
@@ -23,6 +23,7 @@ class CrawlDataCommand extends CConsoleCommand
 				$filePath = helper::downloadAvatar($imgAvatar, time().'_'.$i);
 				$sqlItems[] = "('".$url."','".$title."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."')";
 				$i++;
+				echo 'Crawl success |'.$url."\n";
 			}
 			//echo '<pre>';print_r($article);exit;
 			$sql = "INSERT INTO tbl_crawl_url(url, name, category_id, site, created_datetime, updated_datetime, avatar_path) VALUES";
