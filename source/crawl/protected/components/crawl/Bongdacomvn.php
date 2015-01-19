@@ -20,7 +20,7 @@ class Bongdacomvn extends DataCrawl
 	protected function beforeGetContent()
 	{
 		parent::beforeGetContent();
-		$modify = $this->html->find("#main-content .post-inner .entry img",0);
+		//$modify = $this->html->find("#main-content .post-inner .entry img",0);
 		foreach ($this->html->find("#main-content .post-inner .entry img") as $e){
 			$src = 'data-src';
 			$e->src = $e->$src;
