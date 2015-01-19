@@ -83,7 +83,7 @@ class CrawlDataCommand extends CConsoleCommand
 						echo "\n";
 						list($width, $height) = getimagesize($fileSource);
 						$imgCrop = new ImageCrop($fileSource, 0, 0, $width, $height);
-						$desWidth = $desHeight = 80;
+						$desWidth = $desHeight = 120;
 						//$imgCrop->resizeRatio($fileDest, $desWidth, $desHeight, 100);
 						$imgCrop->resizeCrop($fileDest, $desWidth, $desHeight, 100);
 						$fileSystem->remove($fileSource);
