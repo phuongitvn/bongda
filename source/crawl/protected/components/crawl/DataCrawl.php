@@ -60,7 +60,8 @@ class DataCrawl extends AbstractDataCrawl
 		foreach ($this->html->find("a") as $e)
 		{
 			$innerText = $e->plaintext;
-			$e->outertext = $innerText;
+			//$e->outertext = $innerText;
+			$e->href = '#';
 		}
 	}
 	protected function beforeGetContent()
