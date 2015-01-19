@@ -25,6 +25,9 @@ class Bongdacomvn extends DataCrawl
 			$src = 'data-src';
 			$e->src = $e->$src;
 		}
+		foreach($this-html->find("#main-content .post-inner .entry .wp-caption") as $e){
+			$e->style='';
+		}
 		/* if($modify){
 			$src = $this->getFirstImage();
 			if(strpos($src, 'http')===false){
