@@ -1,5 +1,5 @@
 <?php $this->beginContent('//layouts/main'); ?>
-<div role="main" class="ui-content">
+<div data-role="content" role="main" class="ui-content">
 <?php echo $content;?>
 </div>
 <?php $this->endContent(); ?>

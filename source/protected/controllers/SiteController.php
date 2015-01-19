@@ -28,18 +28,28 @@ class SiteController extends FrontendController
 	public function actionIndex()
 	{
 		$this->layout='scroll';
-		$sql = "SELECT * FROM `tbl_crawl_url` where status=1 order by id desc limit 100";
-		$data = Yii::app()->db->createCommand($sql)->queryAll();
-		$this->render('index', compact('data'));
+		$page = Yii::app()->request->getParam('page',1);
+		$limit = Yii::app()->params['postsPerPage'];
+		$offset = ($page-1)*$limit;
+		$criteria = new CDbCriteria();
+		$criteria->condition = "status=:status";
+		$criteria->params = array(':status'=>CrawlUrlModel::ACTIVE);
+		$criteria->limit = $limit;
+		$criteria->offset = $offset;
+		$criteria->order = "id DESC";
+		$data = CrawlUrlModel::model()->findAll($criteria);
+		$isLoadMore = false;
+		$this->render('index', compact('data','page','isLoadMore'));
+		
 	}
 	public function actionRank()
 	{
-		$this->layout='body';
+		$this->layout='scroll';
 		$this->render('rank');
 	}
 	public function actionSchedule()
 	{
-		$this->layout='body';
+		$this->layout='scroll';
 		$this->render('rank');
 	}
 	/**

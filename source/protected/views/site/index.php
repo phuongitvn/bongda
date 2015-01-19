@@ -1,16 +1,5 @@
-<?php if($data){
-	echo '<ul data-role="listview" data-inset="true" style="margin-top: 0;">';
-	foreach ($data as $item){
-		$avatarUrl = SITE_URL.'/storage/'.$item['avatar_path'];
-		$publishDate = date('d/m/Y', strtotime($item['created_datetime']));
-		$viewUrl = Yii::app()->createUrl('/post/view', array('id'=>$item['id']));
-		echo '<li>
-				<a href="'.$viewUrl.'" class="ui-link">
-				<img width="80" height="80" src="'.$avatarUrl.'">
-				<h3>'.$item['name'].'</h3>
-				<p>'.$publishDate.'</p>
-				</a>
-			</li>';
-	}
-	echo '</ul>';
-}?>
+<?php $this->widget('application.widgets.listItems.listItemsWidget', array('data'=>$data,'isLoadMore'=>$isLoadMore))?>
+<div class="ui-block" style="text-align: center">
+	<a id="loadmore" style="margin: 0;" class="ui-shadow ui-btn ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-inline">Button</a>
+	<input type="hidden" id="page" name="page" value="<?php echo $page+1;?>" />
+</div>
