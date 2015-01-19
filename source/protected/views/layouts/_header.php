@@ -58,6 +58,7 @@
     @media (max-width: 500px){
 	    #postview img{
 	    	width: 100%!important;
+			height: auto!important;
 	    }
     }
     </style>
