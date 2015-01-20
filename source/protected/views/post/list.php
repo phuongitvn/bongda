@@ -5,6 +5,7 @@
 </div>
 <script>
 $("#loadmore").on("click", function(){
+	alert('test')
 	var page = parseInt($("#page").val());
 	$.ajax({
 		url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>$urlKey))?>',
