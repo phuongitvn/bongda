@@ -26,7 +26,7 @@ $action = Yii::app()->controller->action->id;
 
 		<ul data-role="listview">
             <li data-icon="delete"><a href="#" data-rel="close">Tin tức bóng đá</a></li>
-                <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'ngoai-hang-anh'))?>">Bóng đá Anh</a></li>
+                <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'bong-da-anh'))?>">Bóng đá Anh</a></li>
                 <li><a href="#panel-fixed-page2">Bóng đá Tây Ban Nha</a></li>
                 <li><a href="#panel-fixed-page2">Bóng đá Đức</a></li>
                 <li><a href="#panel-fixed-page2">Europa Leage</a></li>
