@@ -39,7 +39,7 @@ class PostController extends FrontendController
 		$this->layout=false;
 		$urlKey = Yii::app()->request->getParam('url_key');
 		$page = Yii::app()->request->getParam('page',1);
-		$limit = Yii::app()->params['postsPerPage'];
+		$limit = Yii::app()->params['postsPerPage']/2;
 		$offset = ($page-1)*$limit;
 		$criteria = new CDbCriteria();
 		$criteria->join = "left join tbl_crawl_category c1 ON t.category_id=c1.id";

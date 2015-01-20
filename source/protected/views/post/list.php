@@ -6,11 +6,13 @@
 <script>
 $(document).ready(function(){
 	$("#loadmore").on("click", function(){
+		var page = parseInt($("#page").val());
 		$.ajax({
 			url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>$urlKey))?>',
-			data: {page:$("#page").val()},
+			data: {page:page},
 			success: function(data){
 				$("#data-list").append(data);
+				$("#page").attr("value",page+1);
 			}
 		})
 	})
