@@ -84,7 +84,7 @@ return CMap::mergeArray(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
 		'postsPerPage'=>20,
-		'tagCloudCount'=>20
+		'tagCloudCount'=>20,
 	),
 	)
 );
