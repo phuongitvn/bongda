@@ -23,8 +23,8 @@ class PostController extends FrontendController
 		$offset = ($page-1)*$limit;
 		$criteria = new CDbCriteria();
 		$criteria->join = "left join tbl_crawl_category c1 ON t.category_id=c1.id";
-		$criteria->condition = "c1.url_key=:url_key";
-		$criteria->params = array(':url_key'=>$urlKey);
+		$criteria->condition = "c1.url_key=:url_key AND t.status=:status";
+		$criteria->params = array(':url_key'=>$urlKey, ':status'=>CrawlUrlModel::ACTIVE);
 		$criteria->limit = $limit;
 		$criteria->offset= $offset;
 		$criteria->order = " t.id DESC";
