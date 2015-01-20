@@ -22,21 +22,11 @@ $action = Yii::app()->controller->action->id;
 		</div>
     </div><!-- /header -->
     <?php echo $content;?>
-    <div data-role="footer" data-position="fixed">
-    	<!-- <div data-role="navbar">
-			<ul data-ajax="false">
-				<li><a href="/" class="ui-btn-active ui-state-persist">Trang chủ</a></li>
-				<li><a href="#panel-fixed-page2">Giới thiệu</a></li>
-				<li><a href="/" class="ui-link">Liên hệ</a></li>
-			</ul>
-		</div> -->
-    </div><!-- /footer -->
-
 	<div data-role="panel" data-position-fixed="true" data-display="push" data-theme="g" id="nav-panel">
 
 		<ul data-role="listview">
             <li data-icon="delete"><a href="#" data-rel="close">Tin tức bóng đá</a></li>
-                <li><a href="#panel-fixed-page2">Bóng đá Anh</a></li>
+                <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'ngoai-hang-anh'))?>">Bóng đá Anh</a></li>
                 <li><a href="#panel-fixed-page2">Bóng đá Tây Ban Nha</a></li>
                 <li><a href="#panel-fixed-page2">Bóng đá Đức</a></li>
                 <li><a href="#panel-fixed-page2">Europa Leage</a></li>

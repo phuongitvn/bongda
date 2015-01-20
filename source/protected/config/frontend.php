@@ -9,7 +9,7 @@ return CMap::mergeArray(
 	require_once dirname(__FILE__).'../../../common/config/common.php',
 	array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Thông Tin Quản Lý',
+	'name'=>'Tin Tức Tổng Hợp Bóng Đá',
 	'theme'=>'jqmobile',
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -46,8 +46,10 @@ return CMap::mergeArray(
 			), */
 			'rules'=>array(
 				'home'=>'site/index',
-				'<action:(login|logout|about|index)>' => 'site/<action>',
-				'page/<url_key_page:[a-zA-Z0-9-]+>' => 'page/view',
+				'bang-xep-hang-bong-da' => 'site/rank',
+				'lich-thi-dau-bong-da' => 'site/schedule',
+				'<action:(login|logout|about)>' => 'site/<action>',
+				'<url_key:[a-zA-Z0-9-]+>' => 'post/index',
 				'<_c:\w+>/<url_key:[a-zA-Z0-9-]+>,<id:\d+>' => '<_c>/view',
 				'<_c:\w+>/<_a:\w+>/<id:\d+>' => '<_c>/<_a>',
 				'<_c:\w+>/<_a:\w+>' => '<_c>/<_a>',
