@@ -1,4 +1,4 @@
-<?php $this->widget('application.widgets.listItems.listItemsWidget', array('data'=>$data))?>
+<?php $this->widget('application.widgets.listItems.listItemsWidget', array('data'=>$data,'category'=>$urlKey))?>
 <div class="ui-block" style="text-align: center">
 	<div id="wrload">
 		<a id="loadmore" style="margin: 0;" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-d ui-btn-icon-notext ui-btn-inline">Button</a>

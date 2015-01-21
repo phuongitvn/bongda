@@ -4,7 +4,11 @@
 		foreach ($data as $item){
 			$avatarUrl = SITE_URL.'/storage/'.$item->avatar_path;
 			$publishDate = date('d/m/Y', strtotime($item->created_datetime));
-			$viewUrl = Yii::app()->createUrl('/post/view', array('id'=>$item->id, 'url_key'=>Common::makeFriendlyUrl($item->name)));
+			if(!empty($category)){
+				$viewUrl = Yii::app()->createUrl('/post/view', array('id'=>$item->id, 'url_key'=>Common::makeFriendlyUrl($item->name),'category'=>$category));
+			}else{
+				$viewUrl = Yii::app()->createUrl('/post/view', array('id'=>$item->id, 'url_key'=>Common::makeFriendlyUrl($item->name)));
+			}
 			echo '<li>
 					<a href="'.$viewUrl.'" class="ui-link">
 					<img width="80" height="80" src="'.$avatarUrl.'">
@@ -18,7 +22,11 @@
 		foreach ($data as $item){
 			$avatarUrl = SITE_URL.'/storage/'.$item->avatar_path;
 			$publishDate = date('d/m/Y', strtotime($item->created_datetime));
-			$viewUrl = Yii::app()->createUrl('/post/view', array('id'=>$item->id, 'url_key'=>Common::makeFriendlyUrl($item->name)));
+			if(!empty($category)){
+				$viewUrl = Yii::app()->createUrl('/post/view', array('id'=>$item->id, 'url_key'=>Common::makeFriendlyUrl($item->name),'category'=>$category));
+			}else{
+				$viewUrl = Yii::app()->createUrl('/post/view', array('id'=>$item->id, 'url_key'=>Common::makeFriendlyUrl($item->name)));
+			}
 			echo '<li class="ui-li-has-thumb">
 				<a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="'.$viewUrl.'" class="ui-link">
 				<img width="80" height="80" src="'.$avatarUrl.'">

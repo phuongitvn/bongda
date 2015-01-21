@@ -50,6 +50,7 @@ return CMap::mergeArray(
 				'lich-thi-dau-bong-da' => 'site/schedule',
 				'<action:(login|logout|about)>' => 'site/<action>',
 				'<url_key:[a-zA-Z0-9-]+>' => 'post/index',
+				'<category:[a-zA-Z0-9-]+>/<url_key:[a-zA-Z0-9-]+>,<id:\d+>' => 'post/view',
 				'<url_key:[a-zA-Z0-9-]+>,<id:\d+>' => 'post/view',
 				'<_c:\w+>/<url_key:[a-zA-Z0-9-]+>,<id:\d+>' => '<_c>/view',
 				'<_c:\w+>/<_a:\w+>/<id:\d+>' => '<_c>/<_a>',
