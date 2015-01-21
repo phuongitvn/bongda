@@ -10,8 +10,7 @@
 	<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.min.js"></script>
 	<script>
 		$(document).on('pageinit', '#main-content', function(){
-var $page = $(this);
-$page.find('#loadmore').on('click', function(e) {
+$('#loadmore').bind('click', function(e) {
         var page = parseInt($("#page").val());
 		$.ajax({
 			url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>'bong-da-anh'))?>',
