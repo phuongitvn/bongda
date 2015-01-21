@@ -139,7 +139,7 @@ class CrawlDataCommand extends CConsoleCommand
 					
 					$urlKey = helper::makeFriendlyUrl($title);
 					$content = addslashes($data->getContentBody());
-					$author = $data->getAuthor();
+					$author = 'BongDa.com.vn';
 					//$urlImage = $data->getImageThumb();
 					$sqlItems[] = "('{$item['id']}','$title','$urlKey','$content','{$item['avatar_path']}','{$author}',NOW(),NOW())";
 					$listUrl[]=$item['id'];
