@@ -8,21 +8,11 @@
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/style.css">
 	<!--<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/jquery.mobile.iscrollview-pull.css">-->
 	<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.min.js"></script>
-	<script>
-		$(document).on('pageinit', '#main-content', function(){
-$('#loadmore').bind('click', function(e) {
-        var page = parseInt($("#page").val());
-		$.ajax({
-			url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>'bong-da-anh'))?>',
-			data: {page:page},
-			success: function(data){
-				$("#data-list").append(data);
-				$("#page").attr("value",page+1);
-			}
-		})
-    }); 
+<script type="text/javascript">
+$(document).bind("mobileinit", function () {
+    $.mobile.ajaxEnabled = false;
 });
-	</script>
+</script>
 	
     <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.mobile-1.4.5.min.js"></script>
     <!--<script src="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/iscroll.js"></script>-->
