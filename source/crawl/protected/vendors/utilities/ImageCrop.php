@@ -74,7 +74,7 @@ class ImageCrop
         //imagejpeg($tmp,$this->_fileName.".jpg",100);
         @imagejpeg($tmp,$newFileJpg,100);
         // Free up memory
-        imagedestroy($tmp);
+        @imagedestroy($tmp);
 
         $this->_imgOrig = @imagecreatefromjpeg($newFileJpg);
         @unlink($newFileJpg);
