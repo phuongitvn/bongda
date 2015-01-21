@@ -138,11 +138,12 @@ class CrawlDataCommand extends CConsoleCommand
 					
 					$urlKey = helper::makeFriendlyUrl($title);
 					$content = addslashes($data->getContentBody());
+					$author = $data->getAuthor();
 					//$urlImage = $data->getImageThumb();
-					$sqlItems[] = "('{$item['id']}','$title','$urlKey','$content','{$item['avatar_path']}',NOW(),NOW())";
+					$sqlItems[] = "('{$item['id']}','$title','$urlKey','$content','{$item['avatar_path']}',NOW(),NOW(),'{$author}')";
 					$listUrl[]=$item['id'];
 				}
-				$sql1 = "INSERT INTO tbl_crawl_content(url_id,title,url_key,content,avatar_url,created_datetime,updated_datetime) VALUES ";
+				$sql1 = "INSERT INTO tbl_crawl_content(url_id,title,url_key,content,avatar_url,created_datetime,updated_datetime,from) VALUES ";
 				$sql1 .=implode(',', $sqlItems);
 				$sql1 .=" ON DUPLICATE KEY UPDATE updated_datetime = NOW() ";
 				$res = $connection->createCommand($sql1)->execute();

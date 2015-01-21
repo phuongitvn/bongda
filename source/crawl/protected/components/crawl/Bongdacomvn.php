@@ -13,10 +13,6 @@ class Bongdacomvn extends DataCrawl
 		parent::__construct($config);
 		
 	}
-	public function test()
-	{
-		echo '<pre>';print_r($this->config);
-	}
 	protected function beforeGetContent()
 	{
 		parent::beforeGetContent();
@@ -38,5 +34,9 @@ class Bongdacomvn extends DataCrawl
 	protected function afterGetContent()
 	{
 		$this->content = str_replace('(BongDa.com.vn)', '(BongDa8.mobi)', $this->content);
+	}
+	public function getAuthor()
+	{
+		return 'BongDa.com.vn';
 	}
 }
