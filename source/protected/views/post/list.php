@@ -4,17 +4,17 @@
 	<input type="hidden" id="page" name="page" value="<?php echo $page+1;?>" />
 </div>
 <script>
-/*$("#loadmore").bind("click", function(event){
+$("#loadmore").bind("click", function(event){
 	var page = parseInt($("#page").val());
 	$.ajax({
-		url: '<?php //echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>$urlKey))?>',
+		url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>$urlKey))?>',
 		data: {page:page},
 		success: function(data){
 			$("#data-list").append(data);
 			$("#page").attr("value",page+1);
 		}
 	})
-})*/
+})
 /*$("#loadmore").on("click", function(){
 	alert('test')
 	var page = parseInt($("#page").val());
