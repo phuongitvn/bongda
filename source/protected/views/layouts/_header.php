@@ -19,7 +19,7 @@ var $page = $(this);
 $page.find('#loadmore').on('click', function(e) {
         var page = parseInt($("#page").val());
 		$.ajax({
-			url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>$urlKey))?>',
+			url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>'bong-da-anh'))?>',
 			data: {page:page},
 			success: function(data){
 				$("#data-list").append(data);
