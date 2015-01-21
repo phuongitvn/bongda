@@ -64,7 +64,7 @@ class ImageCrop
         $new_width = $image_size[0];
         $new_height = $image_size[1];
 
-        $tmp = imagecreatetruecolor($image_size[0],$image_size[1]);
+        $tmp = @imagecreatetruecolor($image_size[0],$image_size[1]);
         $image = @$func($this->_fileName);
         $newFileJpg = "/tmp/".time().".jpg";
         //$newFileJpg = "E:/tmp/".time().".jpg";
