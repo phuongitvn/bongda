@@ -8,7 +8,7 @@ $action = Yii::app()->controller->action->id;
         <h1 style="background: #108040">BÓNG ĐÁ</h1>
         
         <?php if($controller=='post' && $action=='view'){?>
-        <a href="<?php echo Yii::app()->createUrl('/site/index');?>" data-icon="back" data-iconpos="notext" >Quay lại</a>
+        <a href="javascript: window.history.go(-1)" data-icon="back" data-iconpos="notext" >Quay lại</a>
         <?php }else{?>
         <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
         <?php }?>
