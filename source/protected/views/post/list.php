@@ -28,8 +28,9 @@
 	})
 })*/
 
-$(document).on('pagebeforeshow', '#main-content', function(){       
-    $(document).on('click', '#loadmore',function(e) {
+$(document).on('pageinit', '#main-content', function(){
+var $page = $(this);
+$page.find('#loadmore').on('click', function(e) {
         var page = parseInt($("#page").val());
 		$.ajax({
 			url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>$urlKey))?>',
