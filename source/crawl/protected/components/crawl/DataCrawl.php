@@ -5,6 +5,7 @@ class DataCrawl extends AbstractDataCrawl
 	protected $url = '';
 	protected $html = '';
 	protected  $config = array();
+	public $content = '';
 	public function __construct($config)
 	{
 		$this->config = $config;
@@ -31,9 +32,9 @@ class DataCrawl extends AbstractDataCrawl
 		}
 		$contentParttern = $this->config['content_pattern'];
 		$this->beforeGetContent();
-		$contentBody = $this->html->find("$contentParttern",0)->outertext;
+		$this->content = $this->html->find("$contentParttern",0)->outertext;
 		$this->afterGetContent();
-		return $contentBody;
+		return $this->content;
 	}
 	public function getFirstImage()
 	{

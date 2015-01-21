@@ -35,30 +35,8 @@ class Bongdacomvn extends DataCrawl
 			}
 		} */
 	}
-	/* public function setUrl($url)
+	protected function afterGetContent()
 	{
-		$this->url = $url;
-		$this->html = file_get_html($this->url);
-		$this->removeElements();
+		$this->content = str_replace('(BongDa.com.vn)', '(BongDa8.mobi)', $this->content);
 	}
-	public function getTitle()
-	{
-		$title = $this->html->find(".art_title h3",0)->plaintext;
-		return $title;
-	}
-	public function getContentBody()
-	{
-		$this->html->find(".art_content img",0)->src = 'http://bongdaso.com'.$this->getImageThumb();
-		$contentBody = $this->html->find(".art_content",0)->outertext;
-		return $contentBody;
-	}
-	public function getImageThumb()
-	{
-		$imageUrl = $this->html->find(".art_content img",0)->getAttribute('src');
-		return $imageUrl;
-	}
-	private function removeElements()
-	{
-		$this->html->find(".art_center_banner",0)->outertext = '';//remove banner in article
-	} */
 }
