@@ -31,6 +31,7 @@ class ImageCrop
 
 	function loadImage()
 	{
+		try{
 		#echo $this->_fileName."gewgas"; exit;
 		// test exits file
 
@@ -86,6 +87,10 @@ class ImageCrop
 		}
 
 		return true;
+		}catch (Exception $e)
+		{
+			echo $e->getMessage();
+		}
 	}
 
 	// save the final image to file
