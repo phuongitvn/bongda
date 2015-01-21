@@ -70,3 +70,4 @@ $(document).bind("mobileinit", function () {
     </style>
 </head>
 <body>
+<?php include_once("analyticstracking.php"); ?>
