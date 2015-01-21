@@ -12,23 +12,6 @@
     <!--<script src="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/iscroll.js"></script>-->
     <!--<script src="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/jquery.mobile.iscrollview.js"></script>-->
     <!--<script src="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/pull-example.js"></script>-->
-	<script>
-	
-$(document).on('pageinit', '#main-content', function(){
-var $page = $(this);
-$page.find('#loadmore').on('click', function(e) {
-        var page = parseInt($("#page").val());
-		$.ajax({
-			url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>'bong-da-anh'))?>',
-			data: {page:page},
-			success: function(data){
-				$("#data-list").append(data);
-				$("#page").attr("value",page+1);
-			}
-		})
-    }); 
-});
-	</script>
     <style>
     .ui-listview>li.ui-li-has-thumb>a.ui-btn>img:first-child{
     	#position: absolute;
