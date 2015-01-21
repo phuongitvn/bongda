@@ -28,7 +28,7 @@
 	})
 })*/
 
-$(document).on('pageinit', '#main-content', function(){       
+$(document).on('pagebeforeshow', '#main-content', function(){       
     $(document).on('click', '#loadmore',function(e) {
         var page = parseInt($("#page").val());
 		$.ajax({
