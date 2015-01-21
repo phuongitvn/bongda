@@ -14,6 +14,7 @@
  * @property string $url_key
  * @property string $content
  * @property string $avatar_url
+ * @property string $from
  * @property string $created_datetime
  * @property string $updated_datetime
  *
@@ -41,9 +42,10 @@ abstract class BaseCrawlContentModel extends GxActiveRecord {
 			array('url_id', 'required'),
 			array('url_id', 'numerical', 'integerOnly'=>true),
 			array('title, url_key, avatar_url', 'length', 'max'=>255),
+			array('from', 'length', 'max'=>100),
 			array('content, created_datetime, updated_datetime', 'safe'),
-			array('title, url_key, content, avatar_url, created_datetime, updated_datetime', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('url_id, title, url_key, content, avatar_url, created_datetime, updated_datetime', 'safe', 'on'=>'search'),
+			array('title, url_key, content, avatar_url, from, created_datetime, updated_datetime', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('url_id, title, url_key, content, avatar_url, from, created_datetime, updated_datetime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,6 +66,7 @@ abstract class BaseCrawlContentModel extends GxActiveRecord {
 			'url_key' => Yii::t('app', 'Url Key'),
 			'content' => Yii::t('app', 'Content'),
 			'avatar_url' => Yii::t('app', 'Avatar Url'),
+			'from' => Yii::t('app', 'From'),
 			'created_datetime' => Yii::t('app', 'Created Datetime'),
 			'updated_datetime' => Yii::t('app', 'Updated Datetime'),
 		);
@@ -77,6 +80,7 @@ abstract class BaseCrawlContentModel extends GxActiveRecord {
 		$criteria->compare('url_key', $this->url_key, true);
 		$criteria->compare('content', $this->content, true);
 		$criteria->compare('avatar_url', $this->avatar_url, true);
+		$criteria->compare('from', $this->from, true);
 		$criteria->compare('created_datetime', $this->created_datetime, true);
 		$criteria->compare('updated_datetime', $this->updated_datetime, true);
 
