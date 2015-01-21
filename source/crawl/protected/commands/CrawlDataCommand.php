@@ -85,7 +85,8 @@ class CrawlDataCommand extends CConsoleCommand
 						$imgCrop = new ImageCrop($fileSource, 0, 0, $width, $height);
 						$desWidth = $desHeight = 120;
 						//$imgCrop->resizeRatio($fileDest, $desWidth, $desHeight, 100);
-						$imgCrop->resizeCrop($fileDest, $desWidth, $desHeight, 100);
+						$crop = $imgCrop->resizeCrop($fileDest, $desWidth, $desHeight, 100);
+						if(!$crop) continue;
 						$fileSystem->remove($fileSource);
 						if(file_exists($fileDest)){
 							$fileUpdate[$item['id']] = $parseFilePath[0].'/'.$parseFilePath[1].'/'.$item['id'].'.'.$fileExt;

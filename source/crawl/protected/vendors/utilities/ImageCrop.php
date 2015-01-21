@@ -257,7 +257,8 @@ class ImageCrop
 
 	function resizeCrop($desFile, $desWidth, $desHeight, $quality=90)
 	{
-		$this->loadImage();
+		$res = $this->loadImage();
+		if(!$res) return false;
 		$ratio=min($this->_cropWidth/$desWidth,$this->_cropHeight/$desHeight);
 		$srcW = $desWidth*$ratio;
 		$srcH = $desHeight*$ratio;
