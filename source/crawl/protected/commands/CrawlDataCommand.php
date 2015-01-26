@@ -131,13 +131,14 @@ class CrawlDataCommand extends CConsoleCommand
 				$data = CrawlDataFactory::makeDataCrawl('bdcv');
 				$listUrl = array();
 				$sqlItems = array();
+				$errorItems = array();
 				foreach ($viewUrlList as $item){
 					//$url = $item['site'].'/'.$item['url'];
 					$url = $item['url'];
 					echo '---Start crawl detail from: '.$url.'---'."\n";
 					$set = $data->setUrl($url);
 					if(!$set){ 
-						$listUrl[]=$item['id'];
+						$errorItems[]=$item['id'];
 						continue;
 					}
 					$title = addslashes($data->getTitle());
@@ -154,6 +155,10 @@ class CrawlDataCommand extends CConsoleCommand
 					$sql1 .=implode(',', $sqlItems);
 					$sql1 .=" ON DUPLICATE KEY UPDATE updated_datetime = NOW() ";
 					$res = $connection->createCommand($sql1)->execute();
+				}
+				if(count($errorItems)>0){
+					$sql2 = "UPDATE tbl_crawl_url SET status=2 WHERE id IN(".implode(',', $errorItems).")";
+					$res = $connection->createCommand($sql2)->execute();
 				}
 				$sql2 = "UPDATE tbl_crawl_url SET status=1 WHERE id IN(".implode(',', $listUrl).")";
 				$res = $connection->createCommand($sql2)->execute();
