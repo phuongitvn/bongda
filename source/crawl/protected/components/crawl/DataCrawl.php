@@ -18,6 +18,7 @@ class DataCrawl extends AbstractDataCrawl
 			return false;
 		}
 		$this->removeElements();
+		return true;
 	}
 	public function getTitle()
 	{
