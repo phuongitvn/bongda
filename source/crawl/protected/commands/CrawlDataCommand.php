@@ -130,6 +130,7 @@ class CrawlDataCommand extends CConsoleCommand
 			if($viewUrlList){
 				$data = CrawlDataFactory::makeDataCrawl('bdcv');
 				$listUrl = array();
+				$sqlItems = array();
 				foreach ($viewUrlList as $item){
 					//$url = $item['site'].'/'.$item['url'];
 					$url = $item['url'];
@@ -148,10 +149,12 @@ class CrawlDataCommand extends CConsoleCommand
 					$sqlItems[] = "('{$item['id']}','$title','$urlKey','$content','{$item['avatar_path']}','{$author}',NOW(),NOW())";
 					$listUrl[]=$item['id'];
 				}
-				$sql1 = "INSERT INTO tbl_crawl_content(url_id,title,url_key,content,avatar_url,author,created_datetime,updated_datetime) VALUES ";
-				$sql1 .=implode(',', $sqlItems);
-				$sql1 .=" ON DUPLICATE KEY UPDATE updated_datetime = NOW() ";
-				$res = $connection->createCommand($sql1)->execute();
+				if(count($sqlItems)>0){
+					$sql1 = "INSERT INTO tbl_crawl_content(url_id,title,url_key,content,avatar_url,author,created_datetime,updated_datetime) VALUES ";
+					$sql1 .=implode(',', $sqlItems);
+					$sql1 .=" ON DUPLICATE KEY UPDATE updated_datetime = NOW() ";
+					$res = $connection->createCommand($sql1)->execute();
+				}
 				$sql2 = "UPDATE tbl_crawl_url SET status=1 WHERE id IN(".implode(',', $listUrl).")";
 				$res = $connection->createCommand($sql2)->execute();
 				$transaction->commit();
