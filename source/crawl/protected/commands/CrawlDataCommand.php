@@ -134,7 +134,11 @@ class CrawlDataCommand extends CConsoleCommand
 					//$url = $item['site'].'/'.$item['url'];
 					$url = $item['url'];
 					echo '---Start crawl detail from: '.$url.'---'."\n";
-					$data->setUrl($url);
+					$set = $data->setUrl($url);
+					if(!$set){ 
+						$listUrl[]=$item['id'];
+						continue;
+					}
 					$title = addslashes($data->getTitle());
 					
 					$urlKey = helper::makeFriendlyUrl($title);
