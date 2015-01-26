@@ -17,7 +17,8 @@ $("#loadmore").bind("click", function(event){
 		},
 		success: function(data){
 			$("#loadmore").attr("class","ui-shadow ui-btn ui-corner-all ui-icon-arrow-d ui-btn-icon-notext ui-btn-inline");
-			$("#data-list").append(data);
+			//$("#data-list").append(data);
+			$("body").find("ul#data-list").append(data);
 			$("#page").attr("value",page+1);
 		}
 	})
