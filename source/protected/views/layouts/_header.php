@@ -12,23 +12,6 @@
 $(document).bind("mobileinit", function () {
     $.mobile.ajaxEnabled = true;
 });
-function loadMore(url){
-	var page = parseInt($("#page").val());
-	$.ajax({
-		url: url,
-		data: {page:page},
-		beforeSend: function(){
-			$("#loadmore").attr("class","loading");
-			$("#loadmore").html("<img width='25' src='<?php echo Yii::app()->request->baseUrl?>/images/loading.gif' />");
-		},
-		success: function(data){
-			$("#loadmore").attr("class","ui-shadow ui-btn ui-corner-all ui-icon-arrow-d ui-btn-icon-notext ui-btn-inline");
-			//$("#data-list").append(data);
-			$("body").find("ul#data-list").append(data);
-			$("#page").attr("value",page+1);
-		}
-	})
-}
 </script>
 	
     <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.mobile-1.4.5.min.js"></script>
@@ -59,7 +42,7 @@ function loadMore(url){
     	margin: 2px 0;
     	white-space: normal!important;
     	font-weight: bold!important;
-    	color: #116AB5;
+    	#color: #116AB5;
     }
     .ui-listview>li p{
     	white-space: normal!important;
