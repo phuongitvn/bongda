@@ -10,7 +10,7 @@
 	<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).bind("mobileinit", function () {
-    $.mobile.ajaxEnabled = false;
+    $.mobile.ajaxEnabled = true;
 });
 </script>
 	
