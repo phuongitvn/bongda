@@ -14,6 +14,7 @@ class DataCrawl extends AbstractDataCrawl
 	{
 		$this->url = $url;
 		$this->html = file_get_html($this->url);
+		var_dump($this->html);
 		$this->removeElements();
 	}
 	public function getTitle()
