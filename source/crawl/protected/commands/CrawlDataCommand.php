@@ -135,6 +135,10 @@ class CrawlDataCommand extends CConsoleCommand
 				$innerText = $e->plaintext;
 				$e->href = '#';
 			}
+			foreach ($html->find("td.col_detail") as $e)
+			{
+				$e->outertext = '';
+			}
 			$pattern = $item['pattern_main'];
 			$html = $html->find("$pattern",0)->outertext;
 			$sql = "update tbl_crawl_page
