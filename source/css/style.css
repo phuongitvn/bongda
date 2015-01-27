@@ -41,3 +41,7 @@ background: #eee;
 	height: 17px;
 	margin-top: 3px;
 }
+.sc_rank table thead th{
+	text-align: left;
+	font-size: 12px;
+}
