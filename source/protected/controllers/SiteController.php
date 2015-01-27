@@ -39,12 +39,12 @@ class SiteController extends FrontendController
 				$e->outertext = '';
 			}
 			$pattern = $item['pattern_main'];
-			$html = $html->find("$pattern",0)->outertext;
+			echo $content = $html->find("$pattern",0)->outertext;
 			$sql = "update tbl_crawl_page
 					set html=:html, updated_datetime=NOW()
 					where id=:id";
 			$command = Yii::app()->db->createCommand($sql);
-			$command->bindParam(':html', $html, PDO::PARAM_STR);
+			$command->bindParam(':html', $content, PDO::PARAM_STR);
 			$command->bindParam(':id', $item['id'], PDO::PARAM_STR);
 			$res = $command->execute();
 			if($res) echo 'update success';
