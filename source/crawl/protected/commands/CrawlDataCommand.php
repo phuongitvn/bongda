@@ -140,6 +140,14 @@ class CrawlDataCommand extends CConsoleCommand
 			{
 				$e->outertext = '';
 			}
+			if($item['description']=='rank'){
+				$html->find("thead tr th.col_won",0)->outertext='';
+				foreach ($html->find("tbody tr td.col_won") as $e)
+				{
+					$e->outertext = '';
+				}
+			}
+			
 			$pattern = $item['pattern_main'];
 			$html = $html->find("$pattern",0)->outertext;
 			$sql = "update tbl_crawl_page
