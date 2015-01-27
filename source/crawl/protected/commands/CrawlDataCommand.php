@@ -139,6 +139,10 @@ class CrawlDataCommand extends CConsoleCommand
 			{
 				$e->outertext = '';
 			}
+			foreach ($html->find(".sepa") as $e)
+			{
+				$e->innertext = ' - ';
+			}
 			$pattern = $item['pattern_main'];
 			$html = $html->find("$pattern",0)->outertext;
 			$sql = "update tbl_crawl_page
