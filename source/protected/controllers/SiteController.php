@@ -1,5 +1,5 @@
 <?php
-include 'E:\source\gcms\bongda\trunk\source\crawl\protected\components\crawl\simple_html_dom.php';
+//include 'E:\source\gcms\bongda\trunk\source\crawl\protected\components\crawl\simple_html_dom.php';
 class SiteController extends FrontendController
 {
 	/**
