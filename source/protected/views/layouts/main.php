@@ -5,7 +5,7 @@ $action = Yii::app()->controller->action->id;
 ?>
 <div data-role="page" id="panel-fixed-page1" data-title=".::Tin Bóng Đá::.">
     <div data-role="header" data-position="fixed" style="border-bottom: 0;background: #108040;text-shadow: none;color: #fff;">
-        <h1 style="background: #108040">BÓNG ĐÁ</h1>
+        <h1 style="background: #108040">BONGDA8.MOBI</h1>
         
         <?php if($controller=='post' && $action=='view'){?>
         <a href="javascript: window.history.go(-1)" data-icon="back" data-iconpos="notext" >Quay lại</a>
