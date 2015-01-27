@@ -662,7 +662,13 @@ class SiteController extends FrontendController
 	public function actionRank()
 	{
 		$this->layout='scroll';
-		$this->render('rank');
+		$rank = Yii::app()->request->getParam('rank','premier_league_rank');
+		$crit = new CDbCriteria();
+		$crit->condition = "category=:cat";
+		$crit->params = array(':cat'=>$rank);
+		$crit->order = "ordering ASC";
+		$data = WebCrawlPageModel::model()->findAll($crit);
+		$this->render('rank', compact('data'));
 	}
 	public function actionSchedule()
 	{
