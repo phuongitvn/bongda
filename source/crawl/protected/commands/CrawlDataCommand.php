@@ -141,8 +141,19 @@ class CrawlDataCommand extends CConsoleCommand
 				$e->outertext = '';
 			}
 			if($item['description']=='rank'){
+				$html->find("thead tr th.col_played",0)->innertext='Trận';
 				$html->find("thead tr th.col_won",0)->outertext='';
 				foreach ($html->find("tbody tr td.col_won") as $e)
+				{
+					$e->outertext = '';
+				}
+				$html->find("thead tr th.col_goals",0)->outertext='';
+				foreach ($html->find("tbody tr td.col_goals") as $e)
+				{
+					$e->outertext = '';
+				}
+				$html->find("thead tr th.col_goal_againsts",0)->outertext='';
+				foreach ($html->find("tbody tr td.col_goal_againsts") as $e)
 				{
 					$e->outertext = '';
 				}
