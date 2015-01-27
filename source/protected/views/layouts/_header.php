@@ -8,12 +8,6 @@
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/style.css">
 	<!--<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/jquery.mobile.iscrollview-pull.css">-->
 	<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).bind("mobileinit", function () {
-    $.mobile.ajaxEnabled = true;
-});
-</script>
-	
     <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.mobile-1.4.5.min.js"></script>
     <!--<script src="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/iscroll.js"></script>-->
     <!--<script src="<?php echo Yii::app()->request->baseUrl;?>/js/scroll/jquery.mobile.iscrollview.js"></script>-->
