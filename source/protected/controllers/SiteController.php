@@ -20,37 +20,6 @@ class SiteController extends FrontendController
 			),
 		);
 	}
-	public function actionCrawl()
-	{
-		$sql = "select * from tbl_crawl_page";
-		$data = Yii::app()->db->createCommand($sql)->queryAll();
-		foreach ($data as $key => $item){
-			echo $url = $item['url'];
-			echo "\n";
-			$html = file_get_html($url);
-			if(!$html) continue;
-			foreach ($html->find("a") as $e)
-			{
-				$innerText = $e->plaintext;
-				$e->href = '#';
-			}
-			foreach ($html->find("td.col_detail") as $e)
-			{
-				$e->outertext = '';
-			}
-			$pattern = $item['pattern_main'];
-			echo $content = $html->find("$pattern",0)->outertext;
-			$sql = "update tbl_crawl_page
-					set html=:html, updated_datetime=NOW()
-					where id=:id";
-			$command = Yii::app()->db->createCommand($sql);
-			$command->bindParam(':html', $content, PDO::PARAM_STR);
-			$command->bindParam(':id', $item['id'], PDO::PARAM_STR);
-			$res = $command->execute();
-			if($res) echo 'update success';
-		}
-		exit;
-	}
 	public function actionTest()
 	{
 		$url = 'http://tyso.bongda.com.vn/widgets/widget-fixtures-not-started.php?league_id=1&season=1415&limit=20&css=http%3A%2F%2Ftyso.bongda.com.vn%2Fcss%2Ffixture-recent.css';
