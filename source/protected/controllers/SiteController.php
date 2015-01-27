@@ -1,5 +1,5 @@
 <?php
-//include 'E:\source\gcms\bongda\trunk\source\crawl\protected\components\crawl\simple_html_dom.php';
+include dirname(__FILE__).'/../../crawl/protected/components/crawl/simple_html_dom.php';
 class SiteController extends FrontendController
 {
 	/**
@@ -22,6 +22,15 @@ class SiteController extends FrontendController
 	}
 	public function actionTest()
 	{
+		$url = 'http://tyso.bongda.com.vn/widgets/widget-fixtures-not-started.php?league_id=1&season=1415&limit=20&css=http%3A%2F%2Ftyso.bongda.com.vn%2Fcss%2Ffixture-recent.css';
+		$html = file_get_html($url);
+		foreach ($html->find("a") as $e)
+		{
+			$innerText = $e->plaintext;
+			$e->href = '#';
+		}
+		echo $content = $html->find("body",0)->innertext;
+		exit;
 		$sql = "select * from tbl_crawl_page";
 		$data = Yii::app()->db->createCommand($sql)->queryAll();
 		$result = array();
