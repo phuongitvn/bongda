@@ -29,4 +29,9 @@ background: #eee;
 }
 .schedule-main table .col_result{
 	background: #9EDDCC;
+	text-align: center;
+}
+.schedule-main table .col_result div{
+	float: left;
+	display: inline-block;
 }
