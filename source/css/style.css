@@ -1,1 +1,24 @@
 @CHARSET "ISO-8859-1";
+#schedule table{
+	width: 100%
+}
+#schedule h3{
+	background: #EDEDED;
+	text-align: center;
+	color: #333;
+	margin: 20px 0 0;
+	text-shadow: none;
+	font-size: 19px;
+	padding: 5px;
+}
+.schedule-main table .row_odd {
+background: #eee;
+}
+.schedule-main table tr td{
+	padding: 5px;
+	border: 0;
+}
+.schedule-main table .team{
+	font-weight: normal;
+	font-size: 13px;
+}
