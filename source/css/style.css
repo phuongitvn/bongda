@@ -19,7 +19,8 @@
 .schedule-main table .row_odd {
 background: #eee;
 }
-.schedule-main table tr td{
+.schedule-main table tr td,
+.schedule-main table tr th{
 	padding: 5px;
 	border: 0;
 }
