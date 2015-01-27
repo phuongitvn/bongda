@@ -141,21 +141,17 @@ class CrawlDataCommand extends CConsoleCommand
 				$e->outertext = '';
 			}
 			if($item['description']=='rank'){
+				$domRemove = array('col_won','col_played_away','col_goals','col_goal_againsts','col_played_home','col_draw','col_lost');
 				$html->find("thead tr th.col_played",0)->innertext='Trận';
-				$html->find("thead tr th.col_won",0)->outertext='';
-				foreach ($html->find("tbody tr td.col_won") as $e)
-				{
-					$e->outertext = '';
-				}
-				$html->find("thead tr th.col_goals",0)->outertext='';
-				foreach ($html->find("tbody tr td.col_goals") as $e)
-				{
-					$e->outertext = '';
-				}
-				$html->find("thead tr th.col_goal_againsts",0)->outertext='';
-				foreach ($html->find("tbody tr td.col_goal_againsts") as $e)
-				{
-					$e->outertext = '';
+				$html->find("thead tr th.col_goal_diffs",0)->innertext='Hệ số';
+				$html->find("thead tr th.col_points",0)->innertext='Điểm';
+				
+				foreach ($domRemove as $dom){
+					$html->find("thead tr th.$dom",0)->outertext='';
+					foreach ($html->find("tbody tr td.$dom") as $e)
+					{
+						$e->outertext = '';
+					}
 				}
 			}
 			
