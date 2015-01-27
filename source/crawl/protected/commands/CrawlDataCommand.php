@@ -121,6 +121,32 @@ class CrawlDataCommand extends CConsoleCommand
 		}
 		
 	}
+	public function actionPage()
+	{
+		include dirname(__FILE__).'/../components/crawl/simple_html_dom.php';
+		$sql = "select * from tbl_crawl_page";
+		$data = Yii::app()->db->createCommand($sql)->queryAll();
+		foreach ($data as $key => $item){
+			$url = $item['url'];
+			$html = file_get_html($url);
+			if(!$html) continue;
+			foreach ($html->find("a") as $e)
+			{
+				$innerText = $e->plaintext;
+				$e->href = '#';
+			}
+			$pattern = $item['pattern_main'];
+			$html = $html->find("$pattern",0)->outertext;
+			$sql = "update tbl_crawl_page
+					set html=:html, updated_datetime=NOW()
+					where id=:id";
+			$command = Yii::app()->db->createCommand($sql);
+			$command->bindParam(':html', $html, PDO::PARAM_STR);
+			$command->bindParam(':id', $item['id'], PDO::PARAM_STR);
+			$res = $command->execute();
+			if($res) echo 'update success';
+		}
+	}
 	public function actionView()
 	{
 		$connection=Yii::app()->db;
