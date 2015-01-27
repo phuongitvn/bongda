@@ -127,7 +127,8 @@ class CrawlDataCommand extends CConsoleCommand
 		$sql = "select * from tbl_crawl_page";
 		$data = Yii::app()->db->createCommand($sql)->queryAll();
 		foreach ($data as $key => $item){
-			$url = $item['url'];
+			echo $url = $item['url'];
+			echo "\n";
 			$html = file_get_html($url);
 			if(!$html) continue;
 			foreach ($html->find("a") as $e)
