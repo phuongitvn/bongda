@@ -35,3 +35,8 @@ background: #eee;
 	float: left;
 	display: inline-block;
 }
+.sc_played table .col_result .sepa{
+	background: url(../images/sepa.jpg) no-repeat center center;
+	width: 15px;
+	height: 17px;	
+}
