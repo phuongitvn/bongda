@@ -14,6 +14,7 @@
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_panel.php';?>
 <script>
 $('#post-list-<?php echo $urlKey;?>').on('pagecreate', function(event) {
+	<?php include_once dirname(dirname(__FILE__)).DS."layouts".DS."analyticstracking_ajax.php"; ?>
 	$("#post-list-<?php echo $urlKey;?> #loadmore").on("click", function(event){
 		var page = parseInt($("#post-list-<?php echo $urlKey;?> #page").val());
 		$.ajax({
@@ -32,6 +33,5 @@ $('#post-list-<?php echo $urlKey;?>').on('pagecreate', function(event) {
 		})
 	})
 })
-
 </script>
 </div>

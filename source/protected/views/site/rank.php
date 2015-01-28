@@ -1,4 +1,4 @@
-<div data-role="page" id="site-home" data-title=".::Bảng Xếp Hạng Bóng Đá::.">
+<div data-role="page" id="site-rank" data-title=".::Bảng Xếp Hạng Bóng Đá::.">
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_header.php';?>
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -1em;">
@@ -13,4 +13,9 @@
 </div>
 </div>
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_panel.php';?>
+<script>
+$('#site-rank').on('pagecreate', function(event) {
+	<?php include_once dirname(dirname(__FILE__)).DS."layouts".DS."analyticstracking_ajax.php"; ?>
+})
+</script>
 </div>

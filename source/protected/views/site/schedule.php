@@ -13,4 +13,9 @@
 </div>
 </div>
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_panel.php';?>
+<script>
+$('#site-schedule').on('pagecreate', function(event) {
+	<?php include_once dirname(dirname(__FILE__)).DS."layouts".DS."analyticstracking_ajax.php"; ?>
+})
+</script>
 </div>
