@@ -56,20 +56,5 @@ $action = Yii::app()->controller->action->id;
 
 </div><!-- /page -->
 
-<div data-role="page" id="panel-fixed-page2">
-
-    <div data-role="header">
-        <h1>Landing page</h1>
-    </div><!-- /header -->
-
-    <div role="main" class="ui-content jqm-content">
-
-        <p>This is just a landing page.</p>
-
-        <a href="#panel-fixed-page1" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini ui-icon-back ui-btn-icon-left">Back</a>
-
-    </div><!-- /content -->
-
-</div><!-- /page -->
 </body>
 </html>
