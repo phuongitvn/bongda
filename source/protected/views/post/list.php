@@ -1,4 +1,4 @@
-<div data-role="page" id="post-list" data-title=".::Tin Bóng Đá::.">
+<div data-role="page" id="post-list-<?php echo $urlKey;?>" data-title=".::Tin Bóng Đá::.">
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_header.php';?>
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -1em;">
@@ -13,9 +13,8 @@
 </div>
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_panel.php';?>
 <script>
-$('#post-list').on('pagecreate', function() {
-	$("#loadmore").bind("click", function(e){
-		console.log('test')
+$('#post-list-<?php echo $urlKey;?>').on('pagecreate', function(event) {
+	$("#post-list-<?php echo $urlKey;?> #loadmore").on("click", function(event){
 		var page = parseInt($("#page").val());
 		$.ajax({
 			url: '<?php echo Yii::app()->createUrl('/post/loadMore', array('url_key'=>$urlKey))?>',
