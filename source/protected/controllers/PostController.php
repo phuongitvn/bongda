@@ -4,6 +4,7 @@ class PostController extends FrontendController
 	public $layout='body';
 	public function actionView()
 	{
+		$this->layout='column1';
 		$id = Yii::app()->request->getParam('id');
 		$data = WebCrawlContentModel::model()->findByPk($id);
 		if(!$data){
@@ -16,7 +17,8 @@ class PostController extends FrontendController
 	 */
 	public function actionIndex()
 	{
-		$this->layout='scroll';
+		//$this->layout='scroll';
+		$this->layout='column1';
 		$urlKey = Yii::app()->request->getParam('url_key');
 		$page = Yii::app()->request->getParam('page',1);
 		$limit = Yii::app()->params['postsPerPage'];
