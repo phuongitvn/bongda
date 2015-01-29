@@ -11,6 +11,7 @@ $action = Yii::app()->controller->action->id;
                 <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'bong-da-duc'))?>">Bóng đá Đức</a></li>
                 <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'bong-da-y'))?>">Bóng đá Ý</a></li>
                 <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'bong-da-viet-nam'))?>">Bóng đá Việt Nam</a></li>
+                <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'hau-truong-san-co'))?>">Hậu trường sân cỏ</a></li>
 	</ul>
 
 </div><!-- /panel -->
