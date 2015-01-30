@@ -5,7 +5,7 @@
 <div id="schedule" class="content">
 <div class="ui-grid-b ui-responsive">
     <div class="ui-block-a"></div>
-    <div class="ui-block-b"><a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-icon-star ui-btn-icon-right">Chọn giải đấu</a></div>
+    <div class="ui-block-b"><a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-icon-star ui-btn-icon-right"><?php echo $title?></a></div>
     <div class="ui-block-c"></div>
 </div>
 <?php if($data){?>
