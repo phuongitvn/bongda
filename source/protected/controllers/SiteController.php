@@ -107,12 +107,21 @@ class SiteController extends FrontendController
 	{
 		$this->layout='column1';
 		$league = Yii::app()->request->getParam('league','premier_league');
+		switch ($league)
+		{
+			case 'premier_league':
+				$title = 'Ngoại Hạng Anh';
+				break;
+			default:
+				$title = ucfirst($league);
+				break;
+		}
 		$crit = new CDbCriteria();
 		$crit->condition = "category=:cat";
 		$crit->params = array(':cat'=>$league);
 		$crit->order = "ordering ASC";
 		$data = WebCrawlPageModel::model()->findAll($crit);
-		$this->render('schedule', compact('data'));
+		$this->render('schedule', compact('data','league','title'));
 	}
 	/**
 	 * page html dynamic
