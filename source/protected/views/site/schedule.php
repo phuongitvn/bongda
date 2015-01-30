@@ -2,6 +2,7 @@
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_header.php';?>
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -1em;">
+	<a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-btn-inline">Chọn giải đấu</a>
 <div id="schedule" class="content">
 <?php if($data){?>
 <?php foreach ($data as $item){?>
@@ -12,6 +13,23 @@
 </div>
 </div>
 </div>
+<div data-role="panel" id="inside-g" data-position="right" data-display="overlay" data-theme="a">
+			<div class="ui-panel-inner">
+			<ul data-role="listview" class="ui-listview">
+				<li>
+				<a href="<?php echo Yii::app()->createUrl('/site/schedule')?>" class="ui-btn">Ngoại Hạng Anh</a>
+				</li>
+				<li>
+					<a href="<?php echo Yii::app()->createUrl('/site/schedule', array('league'=>'laliga'))?>" class="ui-btn">Laliga</a>
+				</li>
+				<li>
+					<a href="<?php echo Yii::app()->createUrl('/site/schedule', array('league'=>'bundesliga'))?>" class="ui-btn">Bundesliga</a>
+				</li>
+				<li>
+					<a href="<?php echo Yii::app()->createUrl('/site/schedule', array('league'=>'seria'))?>" class="ui-btn">Seria</a>
+				</li>
+			</ul></div>
+		</div>
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_panel.php';?>
 <script>
 $('#site-schedule').on('pagecreate', function(event) {
