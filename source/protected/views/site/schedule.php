@@ -2,8 +2,8 @@
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_header.php';?>
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -1em;">
-	<a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-btn-inline">Chọn giải đấu</a>
 <div id="schedule" class="content">
+<a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-star ui-btn-icon-right">Chọn giải đấu</a>
 <?php if($data){?>
 <?php foreach ($data as $item){?>
 <h3><?php echo $item->name?></h3>
