@@ -3,7 +3,11 @@
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -1em;">
 <div id="schedule" class="content">
-<a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-star ui-btn-icon-right">Chọn giải đấu</a>
+<div class="ui-grid-b ui-responsive">
+    <div class="ui-block-a"></div>
+    <div class="ui-block-b"><a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-icon-star ui-btn-icon-right">Chọn giải đấu</a></div>
+    <div class="ui-block-c"></div>
+</div>
 <?php if($data){?>
 <?php foreach ($data as $item){?>
 <h3><?php echo $item->name?></h3>
