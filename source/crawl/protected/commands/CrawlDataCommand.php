@@ -30,32 +30,34 @@ class CrawlDataCommand extends CConsoleCommand
 			} */
 			//bongda.com.vn
 			if($urlCat['site']=='http://www.bongda.com.vn'){
-			foreach ($html->find(".post-listing article.item-list h2 a") as $e){
-				echo $i;
-				$url = $e->href;
-				$checkIsset = $this->issetUrl($url);
-				if(!$checkIsset){
-					$title = trim(addslashes($e->plaintext));
-					$src = 'data-src';
-					$imgAvatar = $html->find(".post-listing article.item-list .post-thumbnail a noscript img", $i);
-					if(is_object($imgAvatar)){
-						$imgAvatar = $imgAvatar->src;
+			if(is_object($html)){
+				foreach ($html->find(".post-listing article.item-list h2 a") as $e){
+					echo $i;
+					$url = $e->href;
+					$checkIsset = $this->issetUrl($url);
+					if(!$checkIsset){
+						$title = trim(addslashes($e->plaintext));
+						$src = 'data-src';
+						$imgAvatar = $html->find(".post-listing article.item-list .post-thumbnail a noscript img", $i);
+						if(is_object($imgAvatar)){
+							$imgAvatar = $imgAvatar->src;
+						}else{
+							$imgAvatar = '';
+						}
+						echo $imgAvatar;
+						echo "\n";
+						$key = time().'_'.$i;
+						$filePath = helper::downloadAvatar($imgAvatar, $key);
+						$introText = $html->find(".post-listing article.item-list .entry .excerpt", $i)->innertext;
+						$introText = str_replace('BongDa.com.vn', 'BongDa8.mobi', $introText);
+						$introText = trim(addslashes($introText));
+						$sqlItems[] = "('".$url."','".$title."','".$introText."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
 					}else{
-						$imgAvatar = '';
+						echo 'isset';
 					}
-					echo $imgAvatar;
-					echo "\n";
-					$key = time().'_'.$i;
-					$filePath = helper::downloadAvatar($imgAvatar, $key);
-					$introText = $html->find(".post-listing article.item-list .entry .excerpt", $i)->innertext;
-					$introText = str_replace('BongDa.com.vn', 'BongDa8.mobi', $introText);
-					$introText = trim(addslashes($introText));
-					$sqlItems[] = "('".$url."','".$title."','".$introText."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
-				}else{
-					echo 'isset';
+					$i++;
+					echo 'Crawl success |'.$url."\n";
 				}
-				$i++;
-				echo 'Crawl success |'.$url."\n";
 			}
 			}
 			
