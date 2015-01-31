@@ -2,7 +2,7 @@
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_header.php';?>
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -5px;">
-	<h3 style="margin-bottom: 0;"><?php echo CHtml::encode($data['title']);?></h3>
+	<h3 style="margin-bottom: 0;"><?php echo $data['title'];?></h3>
 	<?php
 	$this->widget('application.widgets.social.ShareWidget', array(
 	    'pageTitle' => $data['title'],
