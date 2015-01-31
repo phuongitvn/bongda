@@ -95,7 +95,7 @@ class SiteController extends FrontendController
 	public function actionRank()
 	{
 		$this->layout='column1';
-		$rank = Yii::app()->request->getParam('rank','premier_league_rank');
+		$rank = Yii::app()->request->getParam('league','premier_league_rank');
 		$crit = new CDbCriteria();
 		$crit->condition = "category=:cat";
 		$crit->params = array(':cat'=>$rank);
