@@ -83,14 +83,32 @@ class SiteController extends FrontendController
 		$offset = ($page-1)*$limit;
 		$criteria = new CDbCriteria();
 		$criteria->condition = "status=:status";
-		$criteria->params = array(':status'=>CrawlUrlModel::ACTIVE);
+		$criteria->params = array(':status'=>WebCrawlUrlModel::ACTIVE);
 		$criteria->limit = $limit;
 		$criteria->offset = $offset;
 		$criteria->order = "id DESC";
-		$data = CrawlUrlModel::model()->findAll($criteria);
+		$data = WebCrawlUrlModel::model()->findAll($criteria);
 		$isLoadMore = false;
 		$this->render('index', compact('data','page','isLoadMore'));
 		
+	}
+	/**
+	 * load more items
+	 */
+	public function actionLoadMore()
+	{
+		$this->layout=false;
+		$page = Yii::app()->request->getParam('page',1);
+		$limit = Yii::app()->params['postsPerPage'];
+		$offset = ($page-1)*$limit;
+		$criteria = new CDbCriteria();
+		$criteria->condition = "t.status=:status";
+		$criteria->params = array(':status'=>WebCrawlUrlModel::ACTIVE);
+		$criteria->limit = $limit;
+		$criteria->offset= $offset;
+		$criteria->order = " t.id DESC";
+		$data = WebCrawlUrlModel::model()->findAll($criteria);
+		$this->renderPartial('/post/_ajax_list', compact('data','page'));
 	}
 	public function actionRank()
 	{
