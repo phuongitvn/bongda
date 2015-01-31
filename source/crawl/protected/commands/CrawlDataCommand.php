@@ -47,7 +47,10 @@ class CrawlDataCommand extends CConsoleCommand
 					echo "\n";
 					$key = time().'_'.$i;
 					$filePath = helper::downloadAvatar($imgAvatar, $key);
-					$sqlItems[] = "('".$url."','".$title."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
+					$introText = $html->find(".post-listing article.item-list .entry .excerpt")->innerText;
+					$introText = str_replace('BongDa.com.vn', 'BongDa8.mobi', $introText);
+					$introText = trim(addslashes($introText));
+					$sqlItems[] = "('".$url."','".$title."','".$introText."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
 				}else{
 					echo 'isset';
 				}
@@ -60,7 +63,7 @@ class CrawlDataCommand extends CConsoleCommand
 				for ($i=count($sqlItems)-1;$i>=0;$i--){
 					$sqlItemsSort[] = $sqlItems[$i];
 				}
-				$sql = "INSERT INTO tbl_crawl_url(url, name, category_id, site, created_datetime, updated_datetime, avatar_path, status) VALUES";
+				$sql = "INSERT INTO tbl_crawl_url(url, name, intro_text, category_id, site, created_datetime, updated_datetime, avatar_path, status) VALUES";
 				$sql .=implode(',', $sqlItemsSort);
 				$sql .=" ON DUPLICATE KEY UPDATE updated_datetime = NOW() ";
 				$res = Yii::app()->db->createCommand($sql)->execute();
@@ -194,12 +197,13 @@ class CrawlDataCommand extends CConsoleCommand
 					$urlKey = helper::makeFriendlyUrl($title);
 					$content = addslashes($data->getContentBody());
 					$author = $data->getAuthor();
+					$introText = $item['intro_text'];
 					//$urlImage = $data->getImageThumb();
-					$sqlItems[] = "('{$item['id']}','$title','$urlKey','$content','{$item['avatar_path']}','{$author}',NOW(),NOW())";
+					$sqlItems[] = "('{$item['id']}','$title','$introText','$urlKey','$content','{$item['avatar_path']}','{$author}',NOW(),NOW())";
 					$listUrl[]=$item['id'];
 				}
 				if(count($sqlItems)>0){
-					$sql1 = "INSERT INTO tbl_crawl_content(url_id,title,url_key,content,avatar_url,author,created_datetime,updated_datetime) VALUES ";
+					$sql1 = "INSERT INTO tbl_crawl_content(url_id,title,intro_text,url_key,content,avatar_url,author,created_datetime,updated_datetime) VALUES ";
 					$sql1 .=implode(',', $sqlItems);
 					$sql1 .=" ON DUPLICATE KEY UPDATE updated_datetime = NOW() ";
 					$res = $connection->createCommand($sql1)->execute();
