@@ -3,8 +3,8 @@
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -1em;">
 <div id="schedule" class="content">
-<div>
-<a style="margin: 0" href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-icon-star ui-btn-icon-right"><?php echo $title?></a>
+<div style="margin-top: 10px" >
+<a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-icon-star ui-btn-icon-right"><?php echo $title?></a>
 </div>
 <?php if($data){?>
 <?php foreach ($data as $item){?>
