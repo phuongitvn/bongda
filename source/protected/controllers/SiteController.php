@@ -112,6 +112,12 @@ class SiteController extends FrontendController
 			case 'premier_league':
 				$title = 'Ngoại Hạng Anh';
 				break;
+			case 'seriea':
+				$title = 'Serie A';
+				break;
+			case 'champions_league':
+				$title = 'Champions League';
+				break;
 			default:
 				$title = ucfirst($league);
 				break;
