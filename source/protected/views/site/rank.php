@@ -8,7 +8,7 @@
 	</div>
 <?php if($data){?>
 <h3><?php echo $data->name?></h3>
-<div class="schedule-main sc_<?php echo $item->description?>"><?php echo $item->html?></div>
+<div class="schedule-main sc_<?php echo $data->description?>"><?php echo $data->html?></div>
 <?php }?>
 </div>
 </div>
