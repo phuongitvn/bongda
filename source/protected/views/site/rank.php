@@ -7,10 +7,8 @@
 		<a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-icon-star ui-btn-icon-right"><?php echo $title?></a>
 	</div>
 <?php if($data){?>
-<?php foreach ($data as $item){?>
-<h3><?php echo $item->name?></h3>
+<h3><?php echo $data->name?></h3>
 <div class="schedule-main sc_<?php echo $item->description?>"><?php echo $item->html?></div>
-<?php }?>
 <?php }?>
 </div>
 </div>
