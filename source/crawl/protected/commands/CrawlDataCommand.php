@@ -47,7 +47,7 @@ class CrawlDataCommand extends CConsoleCommand
 					echo "\n";
 					$key = time().'_'.$i;
 					$filePath = helper::downloadAvatar($imgAvatar, $key);
-					$introText = $html->find(".post-listing article.item-list .entry .excerpt")->innerText;
+					$introText = $html->find(".post-listing article.item-list .entry .excerpt", $i)->innerText;
 					$introText = str_replace('BongDa.com.vn', 'BongDa8.mobi', $introText);
 					$introText = trim(addslashes($introText));
 					$sqlItems[] = "('".$url."','".$title."','".$introText."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
