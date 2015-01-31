@@ -119,39 +119,6 @@ class ShareWidget extends CWidget
             $cs->registerMetaTag($baseUrl . $this->pageImages, NULL, NULL, array('property'=> 'og:image'));
         }
  
-        // javasctipt to enable the gadgets
-        $init_js = <<< INIT_JS
-var msie = navigator.appVersion.toLowerCase();
-msie = (msie.indexOf('msie')>-1) ? parseInt(msie.replace(/.*msie[ ]/,'').match(/^[0-9]+/)) : 0;
-if (msie == 0 || msie >= $this->minimumIEVersion) {
-    $('#sns-share').show();
-    // google plus one
-    window.___gcfg = {
-        lang: 'ja'
-    };
-    (function() {
-        var po = document.createElement('script');
-        po.type = 'text/javascript';
-        po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(po, s);
-    })();
-    // twitter
-    !function(d,s,id){
-        var js,fjs=d.getElementsByTagName(s)[0],
-        p=/^http:/.test(d.location)?'http':'https';
-        if(!d.getElementById(id)){
-            js=d.createElement(s);
-            js.id=id;
-            js.async=true;
-            js.src=p+'://platform.twitter.com/widgets.js';
-            fjs.parentNode.insertBefore(js,fjs);
-        }
-    }(document, 'script', 'twitter-wjs');
-}
-INIT_JS;
-        $cs->registerScript('init-sns-share', $init_js, CClientScript::POS_READY);
     }
  
     /**
@@ -160,45 +127,9 @@ INIT_JS;
      */
     public function run()
     {
-        echo '<div id="sns-share" style="display:none">' . "\n";
-        echo '<div class="sns-share-buttons">' . "\n";
- 
-        // google plusone
-        echo '<div class="google-plus" style="float:right">' . "\n";
-        echo '<g:plusone size="medium" href="' . $this->pageUrl . '"></g:plusone>' . "\n";
-        echo '</div>' . "\n";
- 
-        // twitter
-        $tw_text = $this->siteName . ' - ' . $this->pageTitle;
-        if ( $this->pageDescription != '')
-        {
-            $tw_text .= ' : ' . $this->pageDescription;
-        }
-        echo '<div class="tweet-button" style="float:right">' . "\n";
-        echo '<a href="https://twitter.com/share" '
-                . 'class="twitter-share-button" '
-                . 'data-url="' . $this->pageUrl . '" '
-                . 'data-text="' . $tw_text . '" '
-                . 'data-count="horizontal">Tweet</a>' . "\n";
-        echo '</div>' . "\n";
- 
-        // facebook
-        //echo '<iframe src="//www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;layout=button_count&amp;appId=318193994923328" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>';
-        echo '<div class="fb-like" '
-                . 'data-href="' . $this->pageUrl . '" '
-                . 'data-send="true" '
-                . 'data-width="500" '
-                . 'data-show-faces="false"></div>' . "\n";
-        if ($this->showComments)
-        {
-            echo '</div>' . "\n";
-            echo '<div class="facebook-comments">' . "\n";
-            echo '<div class="fb-comments" '
-                    . 'data-href="' . $this->pageUrl . '" '
-                    . 'data-num-posts="4" '
-                    . 'data-width="600"></div>' . "\n";
-        }
-        echo '</div>' . "\n";
-        echo '</div>' . "\n";
+    	$baseUrl = Yii::app()->request->hostInfo . Yii::app()->request->baseUrl;
+    	echo '<a title="'.$this->pageTitle.'" href="http://www.facebook.com/sharer.php?u='.urlencode($baseUrl . '/' . Yii::app()->request->pathInfo).'&amp;t='.urlencode($this->pageTitle).'" target="_blank">
+			     <img src="http://stc.id.nixcdn.com/10/images/share_fb.png"/>
+			  </a>';
     }
 }
