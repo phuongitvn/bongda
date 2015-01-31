@@ -7,7 +7,6 @@
 		<a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-icon-star ui-btn-icon-right"><?php echo $title?></a>
 	</div>
 <?php if($data){?>
-<h3><?php echo $data->name?></h3>
 <div class="schedule-main sc_<?php echo $data->description?>"><?php echo $data->html?></div>
 <?php }?>
 </div>
