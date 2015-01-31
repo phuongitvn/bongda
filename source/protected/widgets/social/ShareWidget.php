@@ -149,14 +149,6 @@ if (msie == 0 || msie >= $this->minimumIEVersion) {
             fjs.parentNode.insertBefore(js,fjs);
         }
     }(document, 'script', 'twitter-wjs');
-    // facebook
-    (function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=318193994923328&version=v2.0";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
 }
 INIT_JS;
         $cs->registerScript('init-sns-share', $init_js, CClientScript::POS_READY);
@@ -191,11 +183,12 @@ INIT_JS;
         echo '</div>' . "\n";
  
         // facebook
-        echo '<div class="fb-like" '
+        echo '<iframe src="//www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;layout=button&amp;appId=115945165111173" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>';
+        /* echo '<div class="fb-like" '
                 . 'data-href="' . $this->pageUrl . '" '
                 . 'data-send="true" '
                 . 'data-width="500" '
-                . 'data-show-faces="false"></div>' . "\n";
+                . 'data-show-faces="false"></div>' . "\n"; */
         if ($this->showComments)
         {
             echo '</div>' . "\n";
