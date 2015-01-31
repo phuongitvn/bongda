@@ -16,8 +16,14 @@
 	text-decoration: none;
 	color: #333;
 }
+.schedule-main table thead tr{
+	background: #eee;
+}
 .schedule-main table .row_odd {
-background: #eee;
+	background: #fff;
+}
+.schedule-main table .row_even {
+	background: #eee;
 }
 .schedule-main table tr td,
 .schedule-main table tr th{
