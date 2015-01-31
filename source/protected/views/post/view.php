@@ -3,6 +3,11 @@
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -5px;">
 	<h3><?php echo CHtml::encode($data['title']);?></h3><br />
+	<?php 
+	$baseUrl = Yii::app()->request->hostInfo . Yii::app()->request->baseUrl;
+	$domain = Yii::app()->request->hostInfo;
+	?>
+	<a href="javascript:;" onclick="window.open('https://www.facebook.com/dialog/share?app_id=318193994923328&amp;caption=<?php echo $domain;?>&amp;href=<?php echo $baseUrl . '/' . Yii::app()->request->pathInfo;?>&amp;redirect_uri=<?php echo $domain;?>')"><img title="Share facebook" alt="share facebook" src="http://stc.id.nixcdn.com/10/images/share_fb.png"></a>
 	<?php
 	$this->widget('application.widgets.social.ShareWidget', array(
 	    'pageTitle' => $data['title'],
