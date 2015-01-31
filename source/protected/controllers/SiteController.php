@@ -96,12 +96,12 @@ class SiteController extends FrontendController
 	{
 		$this->layout='column1';
 		$rank = Yii::app()->request->getParam('rank','premier_league_rank');
-		$title = $rank->name;
 		$crit = new CDbCriteria();
 		$crit->condition = "category=:cat";
 		$crit->params = array(':cat'=>$rank);
 		$crit->order = "ordering ASC";
-		$data = WebCrawlPageModel::model()->findAll($crit);
+		$data = WebCrawlPageModel::model()->find($crit);
+		$title = $data->name;
 		$this->render('rank', compact('data','title'));
 	}
 	public function actionSchedule()
