@@ -30,7 +30,13 @@
 					<a href="<?php echo Yii::app()->createUrl('/site/schedule', array('league'=>'bundesliga'))?>" class="ui-btn">Bundesliga</a>
 				</li>
 				<li>
-					<a href="<?php echo Yii::app()->createUrl('/site/schedule', array('league'=>'seria'))?>" class="ui-btn">Seria</a>
+					<a href="<?php echo Yii::app()->createUrl('/site/schedule', array('league'=>'seriea'))?>" class="ui-btn">Serie A</a>
+				</li>
+				<li>
+					<a href="<?php echo Yii::app()->createUrl('/site/schedule', array('league'=>'champions_league'))?>" class="ui-btn">Champions League</a>
+				</li>
+				<li>
+					<a href="<?php echo Yii::app()->createUrl('/site/schedule', array('league'=>'league1'))?>" class="ui-btn">League 1</a>
 				</li>
 			</ul></div>
 		</div>
