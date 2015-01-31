@@ -7,7 +7,9 @@
 	$baseUrl = Yii::app()->request->hostInfo . Yii::app()->request->baseUrl;
 	$domain = Yii::app()->request->hostInfo;
 	?>
-	<a href="javascript:;" onclick="window.open('https://www.facebook.com/dialog/share?app_id=318193994923328&amp;caption=<?php echo $domain;?>&amp;href=<?php echo $baseUrl . '/' . Yii::app()->request->pathInfo;?>&amp;redirect_uri=<?php echo $domain;?>')"><img title="Share facebook" alt="share facebook" src="http://stc.id.nixcdn.com/10/images/share_fb.png"></a>
+	<a title="<?php echo $data['title'];?>" href="http://www.facebook.com/sharer.php?u=<?php echo urlencode($baseUrl . '/' . Yii::app()->request->pathInfo);?>&amp;t=<?php echo urlencode($data['title']);?>" target="_blank">
+     <img src="http://stc.id.nixcdn.com/10/images/share_fb.png"/>
+	</a>
 	<?php
 	$this->widget('application.widgets.social.ShareWidget', array(
 	    'pageTitle' => $data['title'],
