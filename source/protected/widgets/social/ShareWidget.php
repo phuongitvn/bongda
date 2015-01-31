@@ -12,7 +12,7 @@ class ShareWidget extends CWidget
      * Site Administrator's Facebook ID
      * @var string
      */
-    public $fbSiteAdmin = 'XXXXXXXXXXXXXX';
+    public $fbSiteAdmin = '100009052266524';
  
     /**
      * URL of the page
