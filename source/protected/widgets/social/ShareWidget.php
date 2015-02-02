@@ -129,7 +129,10 @@ class ShareWidget extends CWidget
     {
     	$baseUrl = Yii::app()->request->hostInfo . Yii::app()->request->baseUrl;
     	echo '<a title="'.$this->pageTitle.'" href="http://www.facebook.com/sharer.php?u='.urlencode($baseUrl . '/' . Yii::app()->request->pathInfo).'&amp;t='.urlencode($this->pageTitle).'" target="_blank">
-			     <img src="http://stc.id.nixcdn.com/10/images/share_fb.png"/>
+			     <img src="/images/share-fb.gif"/>
 			  </a>';
+		echo '<a title="'.$this->pageTitle.'" href="https://plus.google.com/share?url='.urlencode($baseUrl . '/' . Yii::app()->request->pathInfo).'&amp;t='.urlencode($this->pageTitle).'" target="_blank">
+			     <img src="/images/share-gg.gif"/>
+		      </a>';
     }
 }
