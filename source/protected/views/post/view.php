@@ -15,7 +15,7 @@
 	));
 	?>
 	<div class="content" id="postview"><?php echo $data['content'];?></div>
-	<p style="text-align: right"><strong style="font-style: italic;font-size: 14px;"><?php echo $data['author'];?></strong></p>
+	<p style="text-align: right"><strong style="font-style: italic;font-size: 14px;">Theo <?php echo $data['author'];?></strong></p>
 </div>
 </div>
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_panel.php';?>
