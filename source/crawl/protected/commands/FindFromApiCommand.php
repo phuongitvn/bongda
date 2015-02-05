@@ -47,8 +47,10 @@ class FindFromApiCommand extends CConsoleCommand
 					$res = $model->save();
 					$errors = $model->getErrors();
 					//get falg icon
-					$fileDest = SITE_PATH.DS.'storage'.DS.'flags'.DS.$value['Team']['Id'].'.png';
+					$folderDest = SITE_PATH.DS.'storage'.DS.'flags';
+					$fileDest = $folderDest.DS.$value['Team']['Id'].'.png';
 					if(!is_file($fileDest)){
+						FileHelper::_makeFolder($folderDest);
 						$fileSource = 'http://resource.sportsflash.com.au/Soccer/Image/Scoreboardlogos/small/'.$value['Team']['Id'].'.png';
 						$getFile = FileHelper::_downloadFileCurl($fileSource, $fileDest);
 						echo '--get file flag '.json_encode($getFile)."\n";
