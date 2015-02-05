@@ -5,7 +5,7 @@
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return CMap::mergeArray(
-		require_once dirname(__FILE__).'../../../../common/config/local.php',array(
+		require_once dirname(__FILE__).'../../../../common/config/common.php',array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
 
