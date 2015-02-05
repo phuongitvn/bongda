@@ -1,6 +1,7 @@
 <?php
 return array(
 	'params'=>array(
+		'session_league'=>	'2014',
 		'site_url'		=>	SITE_URL,
 		'site_path'		=>	SITE_PATH,
 		'storage_path'	=>	SITE_PATH.DS.'storage',
