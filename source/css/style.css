@@ -35,6 +35,9 @@
 	font-weight: normal;
 	font-size: 13px;
 }
+.schedule-main table .team img{
+	vertical-align: middle;
+}
 .schedule-main table .col_result{
 	text-align: center;
 }
