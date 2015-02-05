@@ -22,8 +22,10 @@ class SiteController extends FrontendController
 	}
 	public function actionTest()
 	{
-		$url = 'http://tyso.bongda.com.vn/widgets/widget-fixtures-not-started.php?league_id=1&season=1415&limit=20&css=http%3A%2F%2Ftyso.bongda.com.vn%2Fcss%2Ffixture-recent.css';
+		$url = 'http://www.bongda.com.vn/cat/bong-da-anh/';
 		$html = file_get_html($url);
+		echo $introText = $html->find(".post-listing article.item-list .entry .excerpt", 0)->innertext;
+		exit;
 		foreach ($html->find("a") as $e)
 		{
 			$innerText = $e->plaintext;
@@ -113,13 +115,20 @@ class SiteController extends FrontendController
 	public function actionRank()
 	{
 		$this->layout='column1';
-		$rank = Yii::app()->request->getParam('league','premier_league_rank');
-		$crit = new CDbCriteria();
-		$crit->condition = "category=:cat";
-		$crit->params = array(':cat'=>$rank);
-		$crit->order = "ordering ASC";
-		$data = WebCrawlPageModel::model()->find($crit);
-		$title = $data->name;
+		$leagueId = Yii::app()->request->getParam('league',1);
+		$league = FootballLeagueModel::model()->findByPk($leagueId);
+		if($league){
+			$title = $league->name;
+			$crit = new CDbCriteria();
+			$crit->condition = "league_id=:id AND session_league=:sl ";
+			$crit->params = array(':id'=>$leagueId,':sl'=>Yii::app()->params['session_league']);
+			$crit->order = "P DESC, Pos ASC";
+			$crit->limit = 20;
+			$data = FootballRankPointModel::model()->findAll($crit);
+		}else{
+			throw new CHttpException('404');
+			exit;
+		}
 		$this->render('rank', compact('data','title'));
 	}
 	public function actionSchedule()

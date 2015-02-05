@@ -7,7 +7,27 @@
 		<a href="#inside-g" class="ui-btn ui-shadow ui-corner-all ui-icon-star ui-btn-icon-right"><?php echo $title?></a>
 	</div>
 <?php if($data){?>
-<div class="schedule-main sc_<?php echo $data->description?>"><?php echo $data->html?></div>
+<div class="schedule-main sc_rank">
+<table>
+<thead>
+	<tr><th>stt</th><th>Đội</th><th>Trận</th><th>Hệ số</th><th>Điểm</th></tr>
+</thead>
+<tbody>
+	<?php 
+	$i=0;
+	foreach ($data as $key => $value){
+	$i++;
+	?>
+	<tr class="<?php if($i%2==0) echo 'row row_even'; else echo 'row row_odd';?>">
+	<td align="center" style="background-color:<?php echo ($value->ShadeColor=='transparent')?'#eee':$value->ShadeColor;?>"><?php echo $value->Pos?></td>
+	<td><div class="team"><img src="/storage/flags/<?php echo $value->teamid?>.png" />&nbsp;<?php echo $value->long_name?></div></td>
+	<td><?php echo $value->P?></td>
+	<td><?php echo $value->GD?></td>
+	<td><?php echo $value->PTS?></td></tr>
+	<?php }?>
+</tbody>
+</table>
+</div>
 <?php }?>
 </div>
 </div>
@@ -20,19 +40,21 @@
 		<a href="<?php echo Yii::app()->createUrl('/site/rank')?>" class="ui-btn">Ngoại Hạng Anh</a>
 		</li>
 		<li>
-			<a href="<?php echo Yii::app()->createUrl('/site/rank', array('league'=>'laliga_rank'))?>" class="ui-btn">Laliga</a>
+			<a href="<?php echo Yii::app()->createUrl('/site/rank', array('league'=>2))?>" class="ui-btn">Laliga</a>
 		</li>
 		<li>
-			<a href="<?php echo Yii::app()->createUrl('/site/rank', array('league'=>'bundesliga_rank'))?>" class="ui-btn">Bundesliga</a>
+			<a href="<?php echo Yii::app()->createUrl('/site/rank', array('league'=>3))?>" class="ui-btn">Bundesliga</a>
 		</li>
 		<li>
-			<a href="<?php echo Yii::app()->createUrl('/site/rank', array('league'=>'seriea_rank'))?>" class="ui-btn">Serie A</a>
+			<a href="<?php echo Yii::app()->createUrl('/site/rank', array('league'=>4))?>" class="ui-btn">Serie A</a>
 		</li>
+		<?php /* ?>
 		<li>
 			<a href="<?php echo Yii::app()->createUrl('/site/rank', array('league'=>'champions_league_rank'))?>" class="ui-btn">Champions League</a>
 		</li>
+		<?php */?>
 		<li>
-			<a href="<?php echo Yii::app()->createUrl('/site/rank', array('league'=>'league1_rank'))?>" class="ui-btn">League 1</a>
+			<a href="<?php echo Yii::app()->createUrl('/site/rank', array('league'=>5))?>" class="ui-btn">League 1</a>
 		</li>
 	</ul></div>
 </div>
