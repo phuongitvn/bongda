@@ -34,6 +34,7 @@
  * @property string $StartDateTime
  * @property string $StartDateTimeUTC
  * @property string $SeriesName
+ * @property integer $league_id
  * @property string $created_datetime
  * @property string $updated_datetime
  *
@@ -59,15 +60,15 @@ abstract class BaseFootbalScheduleModel extends GxActiveRecord {
 	public function rules() {
 		return array(
 			array('id', 'required'),
-			array('id, api_id, GroupId, RoundId, WinnerId', 'numerical', 'integerOnly'=>true),
+			array('id, api_id, GroupId, RoundId, WinnerId, league_id', 'numerical', 'integerOnly'=>true),
 			array('IsLatestMatch', 'length', 'max'=>20),
 			array('RoundName, Status, SubStatus, Result, homeTeamPrediction, awayTeamPrediction, drawPrediction, homeTeamPredictedGoals, awayTeamPredictedGoals, StartDateTime, StartDateTimeUTC, SeriesName', 'length', 'max'=>100),
 			array('StatusCode', 'length', 'max'=>5),
 			array('CurrentStatus', 'length', 'max'=>50),
 			array('HasPenaltyShootOut, PoolName', 'length', 'max'=>10),
 			array('HomeTeam, AwayTeam, Venue, created_datetime, updated_datetime', 'safe'),
-			array('api_id, GroupId, IsLatestMatch, RoundId, RoundName, Status, SubStatus, StatusCode, CurrentStatus, Result, HasPenaltyShootOut, PoolName, HomeTeam, AwayTeam, homeTeamPrediction, awayTeamPrediction, drawPrediction, homeTeamPredictedGoals, awayTeamPredictedGoals, Venue, WinnerId, StartDateTime, StartDateTimeUTC, SeriesName, created_datetime, updated_datetime', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, api_id, GroupId, IsLatestMatch, RoundId, RoundName, Status, SubStatus, StatusCode, CurrentStatus, Result, HasPenaltyShootOut, PoolName, HomeTeam, AwayTeam, homeTeamPrediction, awayTeamPrediction, drawPrediction, homeTeamPredictedGoals, awayTeamPredictedGoals, Venue, WinnerId, StartDateTime, StartDateTimeUTC, SeriesName, created_datetime, updated_datetime', 'safe', 'on'=>'search'),
+			array('api_id, GroupId, IsLatestMatch, RoundId, RoundName, Status, SubStatus, StatusCode, CurrentStatus, Result, HasPenaltyShootOut, PoolName, HomeTeam, AwayTeam, homeTeamPrediction, awayTeamPrediction, drawPrediction, homeTeamPredictedGoals, awayTeamPredictedGoals, Venue, WinnerId, StartDateTime, StartDateTimeUTC, SeriesName, league_id, created_datetime, updated_datetime', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, api_id, GroupId, IsLatestMatch, RoundId, RoundName, Status, SubStatus, StatusCode, CurrentStatus, Result, HasPenaltyShootOut, PoolName, HomeTeam, AwayTeam, homeTeamPrediction, awayTeamPrediction, drawPrediction, homeTeamPredictedGoals, awayTeamPredictedGoals, Venue, WinnerId, StartDateTime, StartDateTimeUTC, SeriesName, league_id, created_datetime, updated_datetime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -108,6 +109,7 @@ abstract class BaseFootbalScheduleModel extends GxActiveRecord {
 			'StartDateTime' => Yii::t('app', 'Start Date Time'),
 			'StartDateTimeUTC' => Yii::t('app', 'Start Date Time Utc'),
 			'SeriesName' => Yii::t('app', 'Series Name'),
+			'league_id' => Yii::t('app', 'League'),
 			'created_datetime' => Yii::t('app', 'Created Datetime'),
 			'updated_datetime' => Yii::t('app', 'Updated Datetime'),
 		);
@@ -141,6 +143,7 @@ abstract class BaseFootbalScheduleModel extends GxActiveRecord {
 		$criteria->compare('StartDateTime', $this->StartDateTime, true);
 		$criteria->compare('StartDateTimeUTC', $this->StartDateTimeUTC, true);
 		$criteria->compare('SeriesName', $this->SeriesName, true);
+		$criteria->compare('league_id', $this->league_id);
 		$criteria->compare('created_datetime', $this->created_datetime, true);
 		$criteria->compare('updated_datetime', $this->updated_datetime, true);
 
