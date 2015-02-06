@@ -61,6 +61,48 @@ class FindFromApiCommand extends CConsoleCommand
 			}
 		}
 	}
+	/**
+	 * 
+	 * @param int $round round=0=>lastest
+	 */
+	public function actionSchedule($round)
+	{
+		$round=0;
+		$leagues = array(
+				1=>'http://webapi-fwc-scoreboard.sportsflash.com.au/Fixture/Get/149/vi-VN/368/'.$round.'/0/0/0',//ngoai hang anh
+				2=>'http://webapi-fwc-scoreboard.sportsflash.com.au/Fixture/Get/149/vi-VN/379/'.$round.'/0/0/0',//laliga
+				3=>'http://webapi-fwc-scoreboard.sportsflash.com.au/Fixture/Get/149/vi-VN/373/'.$round.'/0/0/0',//bundesliga
+				4=>'http://webapi-fwc-scoreboard.sportsflash.com.au/Fixture/Get/149/vi-VN/380/'.$round.'/0/0/0',//Seriea
+				5=>'http://webapi-fwc-scoreboard.sportsflash.com.au/Fixture/Get/149/vi-VN/376/'.$round.'/0/0/0'
+		);
+		echo '--Start crawl --'."\n";
+		foreach ($leagues as $leagId => $url){
+			echo $url."\n";
+			$dataRaw = file_get_contents($url);
+			$data = json_decode($dataRaw,true);
+			if(isset($data)){
+				foreach ($data as $key => $value){
+					echo '<pre>';print_r($value);exit;
+					$isExist = $this->isExists($value);
+					if($isExist==false){
+						$model = new FootballRankPointModel();
+						$model->created_datetime = date('Y-m-d H:i:s');
+					}else{
+						$model = FootballRankPointModel::model()->findByPk($isExist);
+						$model->updated_datetime = date('Y-m-d H:i:s');
+					}
+				}
+			}
+		}
+	}
+	private function isExistsSchedule($value)
+	{
+		$crit = new CDbCriteria();
+		$crit->condition = " RoundId=:rid ";
+		$crit->params = array(':p'=>$value['P'],':tid'=>$value['Team']['Id'],':ss'=>self::session_league);
+		$result = FootbalScheduleModel::model()->find($crit);
+		return ($result)?$result->id:false;
+	}
 	private function isExists($value)
 	{
 		$crit = new CDbCriteria();
