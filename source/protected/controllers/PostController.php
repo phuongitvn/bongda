@@ -31,7 +31,8 @@ class PostController extends FrontendController
 		$criteria->offset= $offset;
 		$criteria->order = " t.id DESC";
 		$data = WebCrawlUrlModel::model()->findAll($criteria);
-		$this->render('list', compact('data','page','urlKey'));
+		$title = Yii::app()->db->createCommand("select name from tbl_crawl_category where url_key='$urlKey'")->queryScalar();
+		$this->render('list', compact('data','page','urlKey','title'));
 	}
 	/**
 	 * load more items
