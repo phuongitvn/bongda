@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="follow, index" />
-	<title>.::Tin Bóng Đá::.</title>
+	<title><?php echo $this->pageTitle;?></title>
 	<meta name="title" content="Tin tức bóng đá tổng hợp | bongda8.mobi - Tin tức bóng đá" />
 		<meta name="description" content="Website tổng hợp tin tức bóng đá, Bảng xếp hạng, Lịch thi đấu, Thông tin chuyển nhượng hot nhất, link sopcast tường thuật trực tiếp." />
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/jquery.mobile-1.4.5.min.css">

@@ -1,4 +1,5 @@
-<div data-role="page" id="post-view" data-title=".::Tin Bóng Đá::.">
+<div data-role="page" id="post-view" data-title="<?php echo $data['title'];?>">
+<?php $this->pageTitle=$data['title'];?>
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_header.php';?>
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -5px;">
