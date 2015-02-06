@@ -1,5 +1,5 @@
-<div data-role="page" id="post-list-<?php echo $urlKey;?>" data-title="<?php echo $urlKey;?>">
-<?php $this->pageTitle = $urlKey;?>
+<div data-role="page" id="post-list-<?php echo $urlKey;?>" data-title="<?php echo $title;?>">
+<?php $this->pageTitle = $title;?>
 <?php require_once dirname(dirname(__FILE__)).DS.'layouts'.DS.'_data_role_header.php';?>
 <div data-role="content" role="main" class="ui-content" id="main-content" style="padding-top: 0;">
 	<div style="margin: 0 -1em;">
