@@ -3,7 +3,7 @@ $controller = Yii::app()->controller->id;
 $action = Yii::app()->controller->action->id;
 ?>
 <div id="header" data-role="header" data-position="fixed">
-        <h1 class="h_title">BONGDA8.MOBI</h1>
+        <h1 class="h_title"><img width="144" src="/images/logo.png" /></h1>
         
         <?php if($controller=='post' && $action=='view'){?>
         <a href="javascript: window.history.go(-1)" data-icon="back" data-iconpos="notext" >Quay lại</a>
