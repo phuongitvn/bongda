@@ -82,24 +82,48 @@ class FindFromApiCommand extends CConsoleCommand
 			$data = json_decode($dataRaw,true);
 			if(isset($data)){
 				foreach ($data as $key => $value){
-					echo '<pre>';print_r($value);exit;
-					$isExist = $this->isExists($value);
+					//echo '<pre>';print_r($value);exit;
+					$isExist = $this->isExistsSchedule($value,$leagId);
 					if($isExist==false){
-						$model = new FootballRankPointModel();
+						$model = new FootbalScheduleModel();
 						$model->created_datetime = date('Y-m-d H:i:s');
 					}else{
-						$model = FootballRankPointModel::model()->findByPk($isExist);
+						$model = FootbalScheduleModel::model()->findByPk($isExist);
 						$model->updated_datetime = date('Y-m-d H:i:s');
 					}
+					$model->api_id = $value['Id'];
+					$model->GroupId = $value['GroupId'];
+					$model->IsLatestMatch = $value['IsLatestMatch'];
+					$model->RoundId = $value['RoundId'];
+					$model->RoundName = $value['RoundName'];
+					$model->Status = $value['Status'];
+					$model->SubStatus = $value['SubStatus'];
+					$model->StatusCode = $value['StatusCode'];
+					$model->CurrentStatus = $value['CurrentStatus'];
+					$model->Result = $value['Result'];
+					$model->HasPenaltyShootOut = $value['HasPenaltyShootOut'];
+					$model->PoolName = $value['PoolName'];
+					$model->HomeTeam = json_encode($value['HomeTeam']);
+					$model->AwayTeam = json_encode($value['AwayTeam']);
+					$model->homeTeamPrediction = $value['homeTeamPrediction'];
+					$model->Venue = json_encode($value['Venue']);
+					$model->WinnerId = $value['WinnerId'];
+					$model->StartDateTime = $value['StartDateTime'];
+					$model->StartDateTimeUTC = $value['StartDateTimeUTC'];
+					$model->SeriesName = $value['SeriesName'];
+					$res = $model->save();
+					$errors = $model->getErrors();
+					echo $res?'--update success--':'--update fail--'.json_encode($errors);
+					echo "\n";
 				}
 			}
 		}
 	}
-	private function isExistsSchedule($value)
+	private function isExistsSchedule($value,$leagueId)
 	{
 		$crit = new CDbCriteria();
-		$crit->condition = " RoundId=:rid ";
-		$crit->params = array(':p'=>$value['P'],':tid'=>$value['Team']['Id'],':ss'=>self::session_league);
+		$crit->condition = " RoundId=:rid AND league_id=:lid AND session_league=:ss";
+		$crit->params = array(':rid'=>$value['RoundId'],':lid'=>$leagueId,':ss'=>self::session_league);
 		$result = FootbalScheduleModel::model()->find($crit);
 		return ($result)?$result->id:false;
 	}
