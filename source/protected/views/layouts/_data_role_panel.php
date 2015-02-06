@@ -19,7 +19,7 @@ $action = Yii::app()->controller->action->id;
 </div><!-- /panel -->
 <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="a" id="add-form">
 
-        <form class="userform">
+        <!-- <form class="userform">
 
         	<h2>Login</h2>
 
@@ -33,6 +33,8 @@ $action = Yii::app()->controller->action->id;
                 <div class="ui-block-a"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini">Cancel</a></div>
                 <div class="ui-block-b"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Save</a></div>
 			</div>
-        </form>
-
+        </form> -->
+<h1>Góp Ý</h1>
+<div>Thông tin góp ý xin gửi về địa chỉ:</div>
+<div>bongda8.mobi@gmail.com</div>
 	</div><!-- /panel -->
