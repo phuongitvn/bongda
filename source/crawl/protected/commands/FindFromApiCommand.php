@@ -111,6 +111,8 @@ class FindFromApiCommand extends CConsoleCommand
 					$model->StartDateTime = $value['StartDateTime'];
 					$model->StartDateTimeUTC = $value['StartDateTimeUTC'];
 					$model->SeriesName = $value['SeriesName'];
+					$model->league_id = $leagId;
+					$model->session_league = self::session_league;
 					$res = $model->save();
 					$errors = $model->getErrors();
 					echo $res?'--update success--':'--update fail--'.json_encode($errors);
