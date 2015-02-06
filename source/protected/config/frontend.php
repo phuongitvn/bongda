@@ -10,7 +10,7 @@ return CMap::mergeArray(
 	array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Tin Tức Tổng Hợp Bóng Đá',
-	'theme'=>'jqmobile',
+	'theme'=>'tet2015',
 	// preloading 'log' component
 	'preload'=>array('log'),
 

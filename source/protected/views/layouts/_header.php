@@ -8,60 +8,10 @@
 	<meta name="title" content="Tin tức bóng đá tổng hợp | bongda8.mobi - Tin tức bóng đá" />
 		<meta name="description" content="Website tổng hợp tin tức bóng đá, Bảng xếp hạng, Lịch thi đấu, Thông tin chuyển nhượng hot nhất, link sopcast tường thuật trực tiếp." />
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/jquery.mobile-1.4.5.min.css">
-	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/style.css?t=<?php echo time();?>">
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl;?>/css/style.css">
+	<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl;?>/css/style.css">
 	<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.mobile-1.4.5.min.js"></script>
-    
-    <style>
-    .ui-listview>li.ui-li-has-thumb>a.ui-btn>img:first-child{
-    	#position: absolute;
-		#left: 5px;
-		#top: 5px;
-		#bottom: 5px;
-    }
-    .ui-listview>li.ui-li-has-thumb>a.ui-btn{
-    	#min-height: 68px!important;
-    	#max-height: 68px!important;
-    	padding-left: 92px!important;
-    	padding-right: 0!important
-    }
-    .iscroll-content{
-    	padding: 0 16px!important;
-    }
-    .ui-content .ui-listview{
-    	border-radius: 0!important;
-    }
-    .ui-listview>li h3{
-    font-size: 0.9em!important;
-    	margin: 2px 0;
-    	white-space: normal!important;
-    	font-weight: bold!important;
-    	#color: #116AB5;
-    }
-    .ui-listview>li p{
-    	white-space: normal!important;
-    	margin: 0!important;
-    }
-    .ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after{
-    	background-color: #108040;
-    }
-    .ui-listview>li.ui-li-has-thumb>a.ui-btn:after{
-    	content:none!important;
-    }
-    .smenu li a.ui-btn-active{
-    	#background-color: #B2412D!important;
-    	#border-color: #B2412D!important;
-    	background-color: #ededed!important;
-    	border-color: #ededed!important;
-    	color: #333!important;
-    }
-    @media (max-width: 500px){
-	    #postview img{
-	    	width: 100%!important;
-			height: auto!important;
-	    }
-    }
-    </style>
 </head>
 <body>
 <?php include_once("analyticstracking.php"); ?>
