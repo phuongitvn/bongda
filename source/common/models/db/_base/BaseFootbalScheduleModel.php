@@ -60,8 +60,7 @@ abstract class BaseFootbalScheduleModel extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('id', 'required'),
-			array('id, api_id, GroupId, RoundId, WinnerId, league_id', 'numerical', 'integerOnly'=>true),
+			array('api_id, GroupId, RoundId, WinnerId, league_id', 'numerical', 'integerOnly'=>true),
 			array('IsLatestMatch', 'length', 'max'=>20),
 			array('RoundName, Status, SubStatus, Result, homeTeamPrediction, awayTeamPrediction, drawPrediction, homeTeamPredictedGoals, awayTeamPredictedGoals, StartDateTime, StartDateTimeUTC, SeriesName, session_league', 'length', 'max'=>100),
 			array('StatusCode', 'length', 'max'=>5),
