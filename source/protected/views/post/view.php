@@ -6,8 +6,8 @@
 	<h3 style="margin-bottom: 0;"><?php echo $data['title'];?></h3>
 	<?php
 	$this->widget('application.widgets.social.ShareWidget', array(
-	    'pageTitle' => htmlentities($data['title']),
-	    'pageDescription' => !empty($data['intro_text'])?htmlentities($data['intro_text']):'(BongDa8.Mobi) - Tin tức tổng hợp bóng đá, '.$data['title'],
+	    'pageTitle' => $data['title'],
+	    'pageDescription' => !empty($data['intro_text'])?$data['intro_text']:'(BongDa8.Mobi) - Tin tức tổng hợp bóng đá, '.$data['title'],
 	    'pageType' => 'article',
 	    'pageImages' => array(
 	    		'/storage/'.$data['avatar_url'],
