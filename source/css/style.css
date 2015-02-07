@@ -100,6 +100,7 @@ height: auto!important;
  }
  #header,#header .h_title{
 	background: #108040;
+	margin: 0;
 }
 #header{
 	border-bottom: 0;
