@@ -36,8 +36,8 @@ class CrawlDataCommand extends CConsoleCommand
 					$url = $e->href;
 					$checkIsset = $this->issetUrl($url);
 					if(!$checkIsset){
-						$title = preg_replace("/&#?[a-z0-9]+;/i","",$e->plaintext);
-						$title = trim(addslashes($title));
+						$title = trim(addslashes($e->plaintext));
+						$title = preg_replace('/(&#[0-9]{4};)/', '', $title);
 						$src = 'data-src';
 						$imgAvatar = $html->find(".post-listing article.item-list .post-thumbnail a noscript img", $i);
 						if(is_object($imgAvatar)){
@@ -52,6 +52,7 @@ class CrawlDataCommand extends CConsoleCommand
 						$introText = $html->find(".post-listing article.item-list .entry .excerpt", $i)->innertext;
 						$introText = str_replace('BongDa.com.vn', 'BongDa8.mobi', $introText);
 						$introText = trim(addslashes($introText));
+						$introText = preg_replace('/(&#[0-9]{4};)/', '', $introText);
 						$sqlItems[] = "('".$url."','".$title."','".$introText."','".$urlCat['category_id']."','".$urlCat['site']."', NOW(), NOW(), '".$filePath."',3)";
 					}else{
 						echo 'isset';
