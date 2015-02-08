@@ -19,7 +19,7 @@
 	$i++;
 	?>
 	<tr class="<?php if($i%2==0) echo 'row row_even'; else echo 'row row_odd';?>">
-	<td align="center" style="background-color:<?php echo ($value->ShadeColor=='transparent')?'#eee':$value->ShadeColor;?>"><?php echo $value->Pos?></td>
+	<td align="center" style="background-color:<?php echo ($value->ShadeColor=='transparent')?'#eee':$value->ShadeColor;?>"><?php echo $i;?></td>
 	<td><div class="team"><img src="/storage/flags/<?php echo $value->teamid?>.png" />&nbsp;<?php echo $value->long_name?></div></td>
 	<td><?php echo $value->P?></td>
 	<td><?php echo $value->GD?></td>
