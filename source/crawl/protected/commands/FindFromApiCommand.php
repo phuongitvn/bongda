@@ -116,6 +116,7 @@ class FindFromApiCommand extends CConsoleCommand
 					$model->SeriesName = $value['SeriesName'];
 					$model->league_id = $leagId;
 					$model->session_league = self::session_league;
+					$this->updatePos($value);
 					$res = $model->save();
 					$errors = $model->getErrors();
 					echo $res?'--update success--':'--update fail--'.json_encode($errors);
@@ -139,5 +140,9 @@ class FindFromApiCommand extends CConsoleCommand
 		$crit->params = array(':p'=>$value['P'],':tid'=>$value['Team']['Id'],':ss'=>self::session_league);
 		$result = FootballRankPointModel::model()->find($crit);
 		return ($result)?$result->id:false;
+	}
+	private function updatePos($value)
+	{
+		return Yii::app()->db->creatCommand("update football_rank_point set pos_now='' where teamid=".$value['Team']['Id']." AND session_league='".self::session_league."'");
 	}
 }
