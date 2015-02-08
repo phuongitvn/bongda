@@ -20,7 +20,9 @@ class FindFromApiCommand extends CConsoleCommand
 			$dataRaw = file_get_contents($url);
 			$data = json_decode($dataRaw,true);
 			if(isset($data[0]['lstStandings'])){
+				$i=0;
 				foreach ($data[0]['lstStandings'] as $key => $value){
+					$i++;
 					$isExist = $this->isExists($value);
 					if($isExist==false){
 						$model = new FootballRankPointModel();
@@ -44,6 +46,7 @@ class FindFromApiCommand extends CConsoleCommand
 					$model->teamid = $value['Team']['Id'];
 					$model->league_id = $leagId;
 					$model->session_league = self::session_league;
+					$model->pos_now = date('Y_m_d').$i;
 					$res = $model->save();
 					$errors = $model->getErrors();
 					//get falg icon
