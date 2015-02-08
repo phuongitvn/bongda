@@ -46,7 +46,8 @@ class FindFromApiCommand extends CConsoleCommand
 					$model->teamid = $value['Team']['Id'];
 					$model->league_id = $leagId;
 					$model->session_league = self::session_league;
-					$model->pos_now = date('Y_m_d').$i;
+					$model->pos_now = $i;
+					$this->updatePos($value);
 					$res = $model->save();
 					$errors = $model->getErrors();
 					//get falg icon
@@ -116,7 +117,6 @@ class FindFromApiCommand extends CConsoleCommand
 					$model->SeriesName = $value['SeriesName'];
 					$model->league_id = $leagId;
 					$model->session_league = self::session_league;
-					$this->updatePos($value);
 					$res = $model->save();
 					$errors = $model->getErrors();
 					echo $res?'--update success--':'--update fail--'.json_encode($errors);
