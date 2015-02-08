@@ -10,6 +10,7 @@ $action = Yii::app()->controller->action->id;
                 <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'bong-da-tay-ban-nha'))?>">Bóng đá Tây Ban Nha</a></li>
                 <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'bong-da-duc'))?>">Bóng đá Đức</a></li>
                 <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'bong-da-y'))?>">Bóng đá Ý</a></li>
+                <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'bong-da-phap'))?>">Bóng đá Pháp</a></li>
                 <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'bong-da-viet-nam'))?>">Bóng đá Việt Nam</a></li>
                 <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'hau-truong-san-co'))?>">Hậu trường sân cỏ</a></li>
                 <li><a href="<?php echo Yii::app()->createUrl('/post/index', array('url_key'=>'tin-chuyen-nhuong-cau-thu'))?>">Tin Chuyển Nhượng</a></li>
