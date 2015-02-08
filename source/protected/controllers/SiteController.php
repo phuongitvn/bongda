@@ -22,6 +22,10 @@ class SiteController extends FrontendController
 	}
 	public function actionTest()
 	{
+		$text = htmlspecialchars('Van Gaal &#8216;không thèm&#8217; nên Chelsea mới có được Fabregas');
+		$text = 'Van Gaal &#8216;không thèm&#8217; nên Chelsea mới có được Fabregas';
+		echo $t = preg_replace('/(&#[0-9]{4};)/', '', $text);
+		exit;
 		$url = 'http://www.bongda.com.vn/cat/bong-da-anh/';
 		$html = file_get_html($url);
 		echo $introText = $html->find(".post-listing article.item-list .entry .excerpt", 0)->innertext;
@@ -120,9 +124,9 @@ class SiteController extends FrontendController
 		if($league){
 			$title = $league->name;
 			$crit = new CDbCriteria();
-			$crit->condition = "league_id=:id AND session_league=:sl ";
+			$crit->condition = "league_id=:id AND session_league=:sl AND pos_now<>''";
 			$crit->params = array(':id'=>$leagueId,':sl'=>Yii::app()->params['session_league']);
-			$crit->order = "P DESC, Pos ASC";
+			$crit->order = "pos_now ASC";
 			$crit->limit = 20;
 			$data = FootballRankPointModel::model()->findAll($crit);
 		}else{
