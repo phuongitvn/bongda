@@ -25,6 +25,7 @@
  * @property integer $teamid
  * @property integer $league_id
  * @property string $session_league
+ * @property string $pos_now
  * @property string $created_datetime
  * @property string $updated_datetime
  *
@@ -52,9 +53,10 @@ abstract class BaseFootballRankPointModel extends GxActiveRecord {
 			array('Pos, P, W, D, L, GF, GA, GD, PTS, teamid, league_id', 'numerical', 'integerOnly'=>true),
 			array('ShadeColor, long_name, short_name', 'length', 'max'=>20),
 			array('session_league', 'length', 'max'=>15),
+			array('pos_now', 'length', 'max'=>5),
 			array('created_datetime, updated_datetime', 'safe'),
-			array('Pos, P, W, D, L, GF, GA, GD, PTS, ShadeColor, long_name, short_name, teamid, league_id, session_league, created_datetime, updated_datetime', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, Pos, P, W, D, L, GF, GA, GD, PTS, ShadeColor, long_name, short_name, teamid, league_id, session_league, created_datetime, updated_datetime', 'safe', 'on'=>'search'),
+			array('Pos, P, W, D, L, GF, GA, GD, PTS, ShadeColor, long_name, short_name, teamid, league_id, session_league, pos_now, created_datetime, updated_datetime', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, Pos, P, W, D, L, GF, GA, GD, PTS, ShadeColor, long_name, short_name, teamid, league_id, session_league, pos_now, created_datetime, updated_datetime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -86,6 +88,7 @@ abstract class BaseFootballRankPointModel extends GxActiveRecord {
 			'teamid' => Yii::t('app', 'Teamid'),
 			'league_id' => Yii::t('app', 'League'),
 			'session_league' => Yii::t('app', 'Session League'),
+			'pos_now' => Yii::t('app', 'Pos Now'),
 			'created_datetime' => Yii::t('app', 'Created Datetime'),
 			'updated_datetime' => Yii::t('app', 'Updated Datetime'),
 		);
@@ -110,6 +113,7 @@ abstract class BaseFootballRankPointModel extends GxActiveRecord {
 		$criteria->compare('teamid', $this->teamid);
 		$criteria->compare('league_id', $this->league_id);
 		$criteria->compare('session_league', $this->session_league, true);
+		$criteria->compare('pos_now', $this->pos_now, true);
 		$criteria->compare('created_datetime', $this->created_datetime, true);
 		$criteria->compare('updated_datetime', $this->updated_datetime, true);
 
