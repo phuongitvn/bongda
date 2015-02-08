@@ -37,6 +37,7 @@ class CrawlDataCommand extends CConsoleCommand
 					$checkIsset = $this->issetUrl($url);
 					if(!$checkIsset){
 						$title = trim(addslashes($e->plaintext));
+						$title = html_entity_decode($title);
 						$title = preg_replace('/(&#[0-9]{4};)/', '', $title);
 						$src = 'data-src';
 						$imgAvatar = $html->find(".post-listing article.item-list .post-thumbnail a noscript img", $i);
