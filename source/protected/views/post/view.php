@@ -6,7 +6,7 @@
 	<h3 style="margin-bottom: 0;"><?php echo $data['title'];?></h3>
 	<?php
 	$this->widget('application.widgets.social.ShareWidget', array(
-	    'pageTitle' => $data['title'],
+	    'pageTitle' => htmlspecialchars($data['title']),
 	    'pageDescription' => !empty($data['intro_text'])?$data['intro_text']:'(BongDa8.Mobi) - Tin tức tổng hợp bóng đá, '.$data['title'],
 	    'pageType' => 'article',
 	    'pageImages' => array(
