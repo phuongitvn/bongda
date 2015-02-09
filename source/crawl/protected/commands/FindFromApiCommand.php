@@ -143,6 +143,6 @@ class FindFromApiCommand extends CConsoleCommand
 	}
 	private function updatePos($value)
 	{
-		return Yii::app()->db->createCommand("update football_rank_point set pos_now='' where teamid=".$value['Team']['Id']." AND session_league='".self::session_league."'");
+		return Yii::app()->db->createCommand("update football_rank_point set pos_now=0 where teamid=".$value['Team']['Id']." AND session_league='".self::session_league."'");
 	}
 }
