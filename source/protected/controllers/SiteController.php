@@ -124,7 +124,7 @@ class SiteController extends FrontendController
 		if($league){
 			$title = $league->name;
 			$crit = new CDbCriteria();
-			$crit->condition = "league_id=:id AND session_league=:sl AND pos_now<>''";
+			$crit->condition = "league_id=:id AND session_league=:sl AND pos_now<>0";
 			$crit->params = array(':id'=>$leagueId,':sl'=>Yii::app()->params['session_league']);
 			$crit->order = "pos_now ASC";
 			$crit->limit = 20;
