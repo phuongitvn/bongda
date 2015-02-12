@@ -47,9 +47,12 @@ class FindFromApiCommand extends CConsoleCommand
 					$model->league_id = $leagId;
 					$model->session_league = self::session_league;
 					$model->pos_now = $i;
-					$this->updatePos($value);
-					$res = $model->save();
-					$errors = $model->getErrors();
+					if($this->updatePos($value)){
+						$res = $model->save();
+						$errors = $model->getErrors();
+					}else{
+						$res = false;
+					}
 					//get falg icon
 					$folderDest = SITE_PATH.DS.'storage'.DS.'flags';
 					$fileDest = $folderDest.DS.$value['Team']['Id'].'.png';
@@ -143,6 +146,7 @@ class FindFromApiCommand extends CConsoleCommand
 	}
 	private function updatePos($value)
 	{
-		return Yii::app()->db->createCommand("update football_rank_point set pos_now=0 where teamid=".$value['Team']['Id']." AND session_league='".self::session_league."'");
+		$sql = "update football_rank_point set pos_now=0 where teamid=".$value['Team']['Id']." AND session_league='".self::session_league."'";
+		return Yii::app()->db->createCommand($sql)->execute();
 	}
 }
