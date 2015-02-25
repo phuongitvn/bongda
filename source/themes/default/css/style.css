@@ -1,0 +1,6 @@
+#header,#header .h_title{
+	#background: #c21e1e;
+}
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after{
+ 	#background-color: #c21e1e;
+ }
