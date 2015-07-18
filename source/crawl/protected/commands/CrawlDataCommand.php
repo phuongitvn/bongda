@@ -6,6 +6,7 @@ class CrawlDataCommand extends CConsoleCommand
 {
 	public function actionIndex(){
 		//
+		try{
 		include dirname(__FILE__).'/../components/crawl/simple_html_dom.php';
 		$urlCategory = $this->getUrlCrawlCategory();
 		foreach ($urlCategory as $urlCat){
@@ -127,7 +128,10 @@ class CrawlDataCommand extends CConsoleCommand
 										avatar_path = VALUES(avatar_path),
 										updated_datetime = NOW() "; */
 		}
-		
+		}catch(Exception $e)
+		{
+			echo $e->getMessage();
+		}
 	}
 	public function actionPage()
 	{
