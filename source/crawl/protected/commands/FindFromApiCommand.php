@@ -72,7 +72,7 @@ class FindFromApiCommand extends CConsoleCommand
 	 * 
 	 * @param int $round round=0=>lastest
 	 */
-	public function actionSchedule($round)
+	public function actionSchedule($round=0)
 	{
 		$round=0;
 		$leagues = array(
