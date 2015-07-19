@@ -17,10 +17,10 @@ class Bongdacomvn extends DataCrawl
 	{
 		parent::beforeGetContent();
 		//$modify = $this->html->find("#main-content .post-inner .entry img",0);
-		foreach ($this->html->find("{$this->config['content_pattern']} img") as $e){
+		/*foreach ($this->html->find("{$this->config['content_pattern']} img") as $e){
 			$src = 'data-src';
 			$e->src = $e->$src;
-		}
+		}*/
 		foreach($this->html->find("{$this->config['content_pattern']} .wp-caption") as $e){
 			$e->style='';
 		}
