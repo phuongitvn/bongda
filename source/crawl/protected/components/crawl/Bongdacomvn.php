@@ -5,8 +5,8 @@ class Bongdacomvn extends DataCrawl
 	public function __construct($config)
 	{
 		$config = array(
-				'title_pattern'=>'#main-content .post-inner h1',
-				'content_pattern'=>'#main-content .post-inner .entry',
+				'title_pattern'=>'#content article h1.entry-title',
+				'content_pattern'=>'#content article .entry-content',
 				'remove_pattern'=>'.widget-top|.widget-container|.post-source|.text-html-box|.letsop-ads-mobile|#disqus_thread|script',
 				'imgavatar_pattern'=>'.art_content img'
 		);
@@ -17,11 +17,11 @@ class Bongdacomvn extends DataCrawl
 	{
 		parent::beforeGetContent();
 		//$modify = $this->html->find("#main-content .post-inner .entry img",0);
-		foreach ($this->html->find("#main-content .post-inner .entry img") as $e){
+		foreach ($this->html->find("{$this->config['content_pattern']} img") as $e){
 			$src = 'data-src';
 			$e->src = $e->$src;
 		}
-		foreach($this->html->find("#main-content .post-inner .entry .wp-caption") as $e){
+		foreach($this->html->find("{$this->config['content_pattern']} .wp-caption") as $e){
 			$e->style='';
 		}
 		/* if($modify){
