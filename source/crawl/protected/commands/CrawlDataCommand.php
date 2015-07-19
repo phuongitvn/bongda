@@ -32,7 +32,7 @@ class CrawlDataCommand extends CConsoleCommand
 			//bongda.com.vn
 			if($urlCat['site']=='http://www.bongda.com.vn'){
 			if(is_object($html)){
-				foreach ($html->find(".post-listing article.item-list h2 a") as $e){
+				foreach ($html->find("#content article h2.entry-title a") as $e){
 					echo $i;
 					$url = $e->href;
 					$checkIsset = $this->issetUrl($url);
@@ -41,7 +41,7 @@ class CrawlDataCommand extends CConsoleCommand
 						$title = html_entity_decode($title);
 						$title = preg_replace('/(&#[0-9]{4};)/', '', $title);
 						$src = 'data-src';
-						$imgAvatar = $html->find(".post-listing article.item-list .post-thumbnail a noscript img", $i);
+						$imgAvatar = $html->find("#content article img.featured-image", $i);
 						if(is_object($imgAvatar)){
 							$imgAvatar = $imgAvatar->src;
 						}else{
@@ -51,7 +51,7 @@ class CrawlDataCommand extends CConsoleCommand
 						echo "\n";
 						$key = time().'_'.$i;
 						$filePath = helper::downloadAvatar($imgAvatar, $key);
-						$introText = $html->find(".post-listing article.item-list .entry .excerpt", $i)->innertext;
+						$introText = $html->find("#content article .entry-summary .excerpt", $i)->innertext;
 						$introText = str_replace('BongDa.com.vn', 'BongDa8.mobi', $introText);
 						$introText = trim(addslashes($introText));
 						$introText = preg_replace('/(&#[0-9]{4};)/', '', $introText);
